@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { render } from "react-dom";
-// import { makeData, Logo, Tips } from "./Utils";
-
-// Import React Table
+// import { render } from "react-dom";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
@@ -14,15 +11,14 @@ const styles = theme => ({
 class DataTable extends React.Component {
   constructor() {
     super();
-    this.state = {
-      
+    this.state = {   
     };
   }
 
   render() {
     const { data } = this.props;
     return (
-      <div style={{ maxWidth: 800, position: 'relative', margin: 'auto' }}>
+      <div style={{ maxWidth: 800, position: 'relative', margin: 'auto', marginTop: 20 }}>
         <ReactTable
           data={data}
           columns={[
@@ -33,11 +29,6 @@ class DataTable extends React.Component {
                   Header: "Name",
                   accessor: "geoName",
                 },
-                {
-                  Header: "Geo Code",
-                  id: "geoCode",
-                  accessor: "geoCode",
-                }
               ]
             },
             {
@@ -50,7 +41,7 @@ class DataTable extends React.Component {
               ]
             },
           ]}
-          defaultPageSize={25}
+          defaultPageSize={10}
           className="-striped -highlight"
         />
       </div>

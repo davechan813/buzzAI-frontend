@@ -15,13 +15,12 @@ class App extends Component {
   setData = (data) => this.setState({data: data});
 
   render() {
-    console.log('data in App:', this.state.data);
+    // console.log('data in App:', this.state.data);
     return (
       <div className="App">
         <NavBar />
-
         <InputGroup setData={this.setData} />
-        <DataDisplay data={this.state.data} />
+        {this.state.data.length > 0 && <DataDisplay data={this.state.data} />}
       </div>
     );
   }

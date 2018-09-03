@@ -20,16 +20,25 @@ class DatePicker extends React.Component {
   }
 
   isValid = current => {
-    let yesterday = Datetime.moment().subtract(1, 'day');
-    return current.isAfter(yesterday);
+    let startTime = Datetime.moment(this.props.start);
+    let endTime = Datetime.moment();
+    return current.isAfter(startTime) && current.isBefore(endTime);
   };
 
   render() {
-    const { classes, onChange } = this.props;
+    const { classes, onChange, defaultValue } = this.props;
+
     return (
       <div className={classes.dateTime}>
         <Typography>{this.props.label}</Typography>
-        <Datetime dateFormat="YYYY-MM-DD" onChange={onChange} closeOnSelect isValidDate={this.isValid} timeFormat={false} />
+        <Datetime
+          dateFormat="YYYY-MM-DD"
+          onChange={onChange}
+          closeOnSelect
+          isValidDate={this.isValid}
+          timeFormat={false}
+          defaultValue={defaultValue}
+        />
       </div>
       
     );

@@ -4,9 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import DataTable from './DataTable';
+import DataChart from './DataChart';
 
 const styles = theme => ({
   root: {
@@ -74,13 +73,8 @@ class DataDisplay extends React.Component {
             label="Map"
           />
         </FormGroup>
-        {/* <br /> */}
-        
         {this.state.table && <DataTable data={data} />}
-        
-        
-
-
+        {this.state.chart && <DataChart data={data} />}
       </div>
     );
   }
