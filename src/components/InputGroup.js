@@ -109,7 +109,8 @@ class InputGroup extends React.Component {
 
   handleSearch = () => {
     let self = this;
-    axios.post('http://localhost:3000/popularity', {
+    // axios.post('http://localhost:3000/popularity', {
+    axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/popularity', {
       keyword: self.state.keyword,
       startTime: self.state.startTime,
       endTime: self.state.endTime,
