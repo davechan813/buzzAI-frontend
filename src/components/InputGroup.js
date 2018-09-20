@@ -88,7 +88,7 @@ class InputGroup extends React.Component {
       [name]: event.target.checked,
     });
   }
-  
+
   // handleAdressChange = address => this.setState({ address });
   // handleAdressSelect = selected => {
   //   this.setState({ isGeocoding: true, address: selected });
@@ -140,9 +140,9 @@ class InputGroup extends React.Component {
     const { classes } = this.props;
     // console.log(this.state);
     return (
-      <div>
+      <div id="input-group">
       <form className={classes.root} noValidate autoComplete="off">
-        <div>
+        <div id="top-level-input-group">
           <TextField
             style={{ minWidth: 500 }}
             id="keyword"
@@ -158,9 +158,9 @@ class InputGroup extends React.Component {
             variant="contained"
             size="medium"
             color="primary"
-            className={classes.button}
+            className={classes.button} id="buzz-button"
           >
-            <span className={classes.buttonText}>Buzz!</span>
+            <span className={classes.buttonText} >Buzz!</span>
           </Button>
         </div>
 
@@ -177,13 +177,13 @@ class InputGroup extends React.Component {
               value={this.state.function}
               onChange={this.handleChange('function')}
             >
-              <FormControlLabel 
-                value="region" 
+              <FormControlLabel
+                value="region"
                 control={<Radio color="primary" />}
                 label="Interest By Region"
               />
-              <FormControlLabel 
-                value='time' 
+              <FormControlLabel
+                value='time'
                 control={<Radio color="primary" />}
                 label="Interest By Time"
               />
@@ -197,6 +197,7 @@ class InputGroup extends React.Component {
               label='From'
               start={'2004-01-01'}
               defaultValue={this.state.startTime}
+              id="from-box"
             />
             <DatePicker
               onChange={this.onDateChange('endTime')}
@@ -205,7 +206,7 @@ class InputGroup extends React.Component {
               defaultValue={this.state.endTime}
             />
           </div>
-          
+
           <div style={{ display: 'inline-block' }} className={classes.formControl}>
             <FormLabel component="legend">Geo Info</FormLabel>
             <FormControlLabel
@@ -220,7 +221,7 @@ class InputGroup extends React.Component {
               label="Advanced Search"
             />
             <br />
-            { !this.state.advanced ? 
+            { !this.state.advanced ?
               <FormControl>
                 <InputLabel htmlFor="resolution">Resolution</InputLabel>
                 <Select
@@ -242,7 +243,7 @@ class InputGroup extends React.Component {
               //   value={this.state.address}
               //   onChange={this.handleAdressChange}
               //   onSelect={this.handleAdressSelect}
-              // > 
+              // >
               //   {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               //     <div style={{ display: 'flex', justifyContent: 'center' }}>
               //       <TextField
@@ -255,7 +256,7 @@ class InputGroup extends React.Component {
               //       <div style={{ position: 'absolute', marginTop: 46 }} >
               //         {loading && <MenuItem>Loading...</MenuItem>}
               //         <Paper style={{ background: 'rgba(255,255,255, 1.0)' }} square>
-              //         { suggestions.map(suggestion => 
+              //         { suggestions.map(suggestion =>
               //           <MenuItem
               //             key={'item-' + suggestion.description}
               //             {...getSuggestionItemProps(suggestion)}
@@ -272,11 +273,11 @@ class InputGroup extends React.Component {
           </div>
 
         </div>
-        
+
       </form>
       </div>
     );
-  }    
+  }
 }
 
 InputGroup.propTypes = {

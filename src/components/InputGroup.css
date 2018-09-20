@@ -1,0 +1,22 @@
+#input-group {
+  margin: 10% 10% 10% 10%;
+  font-family: Lato;
+}
+
+@keyframes radial-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
+}
+
+#buzz-button:hover {
+  animation: radial-pulse 1s infinite;
+}
+
+#top-level-input-group {
+  margin-bottom: 5%;
+}
