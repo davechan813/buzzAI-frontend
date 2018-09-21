@@ -12,11 +12,12 @@ import FormLabel from '@material-ui/core/FormLabel';
 import DatePicker from './DatePicker';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-// import PlacesAutocomplete, {
-//   geocodeByAddress,
-//   geocodeByPlaceId,
-//   getLatLng,
-// } from 'react-places-autocomplete';
+import Paper from '@material-ui/core/Paper';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-places-autocomplete';
 import axios from 'axios';
 import moment from 'moment';
 import PlaceSelector from './PlaceSelector';
@@ -89,23 +90,23 @@ class InputGroup extends React.Component {
     });
   }
 
-  // handleAdressChange = address => this.setState({ address });
-  // handleAdressSelect = selected => {
-  //   this.setState({ isGeocoding: true, address: selected });
-  //   geocodeByAddress(selected)
-  //     .then(res => getLatLng(res[0]))
-  //     .then(({ lat, lng }) => {
-  //       this.setState({
-  //         latitude: lat,
-  //         longitude: lng,
-  //         isGeocoding: false,
-  //       });
-  //     })
-  //     .catch(error => {
-  //       this.setState({ isGeocoding: false });
-  //       console.log('error', error); // eslint-disable-line no-console
-  //     });
-  // };
+  handleAdressChange = address => this.setState({ address });
+  handleAdressSelect = selected => {
+    this.setState({ isGeocoding: true, address: selected });
+    geocodeByAddress(selected)
+      .then(res => getLatLng(res[0]))
+      .then(({ lat, lng }) => {
+        this.setState({
+          latitude: lat,
+          longitude: lng,
+          isGeocoding: false,
+        });
+      })
+      .catch(error => {
+        this.setState({ isGeocoding: false });
+        console.log('error', error); // eslint-disable-line no-console
+      });
+  };
 
   handleSearch = () => {
     let self = this;
@@ -238,37 +239,37 @@ class InputGroup extends React.Component {
                   <MenuItem value={'DMA'}>Designated Market Area (DMA)</MenuItem>
                 </Select>
               </FormControl> :
-              <PlaceSelector setGeo={this.setGeo} />
-              // <PlacesAutocomplete
-              //   value={this.state.address}
-              //   onChange={this.handleAdressChange}
-              //   onSelect={this.handleAdressSelect}
-              // >
-              //   {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              //     <div style={{ display: 'flex', justifyContent: 'center' }}>
-              //       <TextField
-              //         style={{ width: 180, marginTop: 16 }}
-              //         {...getInputProps({
-              //           placeholder: 'Search Places',
-              //           className: 'location-search-input',
-              //         })}
-              //       />
-              //       <div style={{ position: 'absolute', marginTop: 46 }} >
-              //         {loading && <MenuItem>Loading...</MenuItem>}
-              //         <Paper style={{ background: 'rgba(255,255,255, 1.0)' }} square>
-              //         { suggestions.map(suggestion =>
-              //           <MenuItem
-              //             key={'item-' + suggestion.description}
-              //             {...getSuggestionItemProps(suggestion)}
-              //           >
-              //             {suggestion.description}
-              //           </MenuItem>
-              //         )}
-              //         </Paper>
-              //       </div>
-              //     </div>
-              //   )}
-              // </PlacesAutocomplete>
+              // <PlaceSelector setGeo={this.setGeo} />
+              <PlacesAutocomplete
+                value={this.state.address}
+                onChange={this.handleAdressChange}
+                onSelect={this.handleAdressSelect}
+              >
+                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <TextField
+                      style={{ width: 180, marginTop: 16 }}
+                      {...getInputProps({
+                        placeholder: 'Search Places',
+                        className: 'location-search-input',
+                      })}
+                    />
+                    <div style={{ position: 'absolute', marginTop: 46 }} >
+                      {loading && <MenuItem>Loading...</MenuItem>}
+                      <Paper style={{ background: 'rgba(255,255,255, 1.0)' }} square>
+                      { suggestions.map(suggestion =>
+                        <MenuItem
+                          key={'item-' + suggestion.description}
+                          {...getSuggestionItemProps(suggestion)}
+                        >
+                          {suggestion.description}
+                        </MenuItem>
+                      )}
+                      </Paper>
+                    </div>
+                  </div>
+                )}
+              </PlacesAutocomplete>
             }
           </div>
 
