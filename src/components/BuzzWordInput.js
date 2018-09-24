@@ -62,8 +62,7 @@ class BuzzWordInput extends Component {
   handleSearch = () => {
     let self = this;
 
-    // axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
-    axios.post('http://localhost:3000/buzz10', {
+    axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
       placeName: self.state.address
     })
       .then(function (response) {
