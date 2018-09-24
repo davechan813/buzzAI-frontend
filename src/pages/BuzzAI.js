@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import Typography from '@material-ui/core/Typography';
 import KeywordTrend from './KeywordTrend';
 import BuzzWord from './BuzzWord';
 import Banner from '../components/Banner';

@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -15,8 +14,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = {
   root: {
@@ -51,8 +48,6 @@ class NavBar extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state);
-
     return (
       <div>
         <AppBar position="static">

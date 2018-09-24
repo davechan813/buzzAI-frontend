@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../components/NavBar';
 import InputGroup from '../components/InputGroup';
 import DataDisplay from '../components/DataDisplay';
 
