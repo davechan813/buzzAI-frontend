@@ -10,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
+import TableFooter from '@material-ui/core/TableFooter';
 import Typography from '@material-ui/core/Typography';
 import { isEqual, isEmpty, differenceWith } from 'lodash';
 
@@ -50,6 +51,8 @@ class BuzzWordData extends React.Component {
     super(props);
     this.state = {
       data: [],
+      page: 0,
+      rowsPerPage: 5,
     };
   }
 
@@ -70,6 +73,10 @@ class BuzzWordData extends React.Component {
     id += 1;
 
     this.setState({ data: [...this.state.data, obj] });
+  }
+
+  handleChangePage = (event, page) => {
+    this.setState({ page });
   }
 
   handleSearch = () => {
@@ -100,7 +107,8 @@ class BuzzWordData extends React.Component {
 
   render() {
     const { classes } = this.props;
-    let rows = this.state.data.slice();
+    const { data, page, rowsPerPage } = this.state;
+    let rows = data.slice(); // immutability ftw
     rows.sort(popularityCompare);
 
     return (
@@ -112,6 +120,7 @@ class BuzzWordData extends React.Component {
         </Typography>
         </div>
         <Button onClick={this.handleSearch}>Search in USA</Button>
+
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
@@ -122,23 +131,41 @@ class BuzzWordData extends React.Component {
           </TableHead>
 
           <TableBody>
-            {rows.map(row => {
-              return (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">
-                    {row.buzz_word}
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.popularity_count}
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.source_url}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(row => {
+                return (
+                  <TableRow key={row.id}>
+                    <TableCell component="th" scope="row">
+                      {row.buzz_word}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {row.popularity_count}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {row.source_url}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
+
+        <TablePagination
+          component="div"
+          page={page}
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[5]}
+          backIconButtonProps={{
+            'aria-label': 'Previous Page',
+          }}
+          nextIconButtonProps={{
+            'aria-label': 'Next Page',
+          }}
+          onChangePage={this.handleChangePage}
+        />
+
       </Paper>
     );
   }
