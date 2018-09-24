@@ -8,6 +8,7 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
+<<<<<<< HEAD
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import PlacesAutocomplete, {
@@ -58,6 +59,11 @@ const styles = theme => ({
     right: 0,
   }
 });
+=======
+import axios from 'axios';
+import { Button, Switch } from '@material-ui/core';
+import BuzzWordData from '../components/BuzzWordData';
+>>>>>>> origin/haejin/dataDisplay
 
 class BuzzWord extends Component {
 	constructor(props) {
@@ -67,7 +73,7 @@ class BuzzWord extends Component {
 		};
 	}
 
-	setData = (data) => this.setState({data: data});
+	setData = (data) => this.setState({ data: data });
 
 	handleAdressChange = address => this.setState({ address });
   handleAdressSelect = selected => {
@@ -111,6 +117,7 @@ class BuzzWord extends Component {
 
 		return (
 			<div>
+<<<<<<< HEAD
 				<Typography variant='display2'>Building</Typography>
 				<PlacesAutocomplete
 					value={this.state.address}
@@ -154,10 +161,17 @@ class BuzzWord extends Component {
 				>
 					<span  >Buzz!</span>
 				</Button>
+=======
+				<BuzzWordData />
+>>>>>>> origin/haejin/dataDisplay
 			</div>
 
 		);
 	}
 }
 
+<<<<<<< HEAD
 export default BuzzWord;
+=======
+export default BuzzWord;
+>>>>>>> origin/haejin/dataDisplay
