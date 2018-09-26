@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,25 +11,32 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
-  root: {
-    // justifyContent: 'center',
-    margin: theme.spacing.unit * 3,
-    flexWrap: 'wrap',
-    textAlign: 'center',
-    overflowX: 'auto',
-    // alignContent: 'center'
-  },
-
-  table: {
-    minWidth: 700,
-  },
-
-  title: {
-    flex: '0 0 auto',
-  }
-});
-
+const styles = theme => (
+  {
+    root: {
+      margin: theme.spacing.unit * 3,
+      flexWrap: 'wrap',
+      overflowX: 'auto',
+    },
+    title: {
+      flex: '0 0 auto',
+    },
+    paper: {
+      padding: theme.spacing.unit * 2,
+      [theme.breakpoints.down('md')]: {
+        width: 300,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 500,
+      },
+      [theme.breakpoints.up('lg')]: {
+        width: 700,
+      },
+      [theme.breakpoints.up('xl')]: {
+        width: 900,
+      },
+    },
+  });
 
 let popularityCompare = (x, y) => {
   let keyA = x.popularity_count,
@@ -43,10 +51,10 @@ class BuzzWordData extends React.Component {
     this.state = {
       data: [],
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 10,
     };
   }
-  
+
   handleChangePage = (event, page) => {
     this.setState({ page });
   }
@@ -56,62 +64,68 @@ class BuzzWordData extends React.Component {
     const { page, rowsPerPage } = this.state;
     let rows = data.slice(); // immutability ftw
     rows.sort(popularityCompare);
-
     return (
 
-      <Paper className={classes.root}>
-        <div className={classes.title}>
-          <Typography variant="title" id="tableTitle">
-            Buzzwords in {address}
-          </Typography>
-        </div>
+      <Grid container direction='column' justify='center' alignItems='center'>
 
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Buzzword</TableCell>
-              <TableCell>Hit Count</TableCell>
-              <TableCell>Source Link</TableCell>
-            </TableRow>
-          </TableHead>
+        <Paper
+          className={classes.paper}>
+          <div className={classes.title}>
+            <Typography variant="title" id="tableTitle" >
+              Buzzwords in {address}
+            </Typography>
+          </div>
 
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(row => {
-                return (
-                  <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.buzz_word}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.popularity_count}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.source_url}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Rank</TableCell>
+                <TableCell>Buzzword</TableCell>
+                <TableCell>Hit Count</TableCell>
+              </TableRow>
+            </TableHead>
 
-        <TablePagination
-          component="div"
-          page={page}
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={[5]}
-          backIconButtonProps={{
-            'aria-label': 'Previous Page',
-          }}
-          nextIconButtonProps={{
-            'aria-label': 'Next Page',
-          }}
-          onChangePage={this.handleChangePage}
-        />
+            <TableBody>
+              {
 
-      </Paper>
+                rows
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    return (
+                      <TableRow key={row.id}>
+                        <TableCell component="th" scope="row">
+                          {index + 1 + page * rowsPerPage}
+                        </TableCell>
+                        <TableCell component="th" scope="row">
+                          <a href={row.source_url}>{row.buzz_word}</a>
+                        </TableCell>
+                        <TableCell component="th" scope="row">
+                          {row.popularity_count}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+            </TableBody>
+          </Table>
+
+          <TablePagination
+            component="div"
+            page={page}
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            rowsPerPageOptions={[10]}
+            backIconButtonProps={{
+              'aria-label': 'Previous Page',
+            }}
+            nextIconButtonProps={{
+              'aria-label': 'Next Page',
+            }}
+            onChangePage={this.handleChangePage}
+          />
+
+        </Paper>
+      </Grid>
+
     );
   }
 }

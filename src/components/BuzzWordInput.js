@@ -23,24 +23,24 @@ let isArrayEqual = (x, y) => {
 
 let popularityCompare = (x, y) => {
   let keyA = x.popularity_count,
-      keyB = y.popularity_count;
+    keyB = y.popularity_count;
 
   return keyB - keyA;
 }
 
-let id = 0;
+let row_id = 0;
 
 class BuzzWordInput extends Component {
   constructor(props) {
-		super(props);
-		this.state = {
+    super(props);
+    this.state = {
       address: '',
       selected: ''
-		};
-	}
+    };
+  }
 
-  handleAdressChange = address => this.setState({ address });
-  handleAdressSelect = selected => this.setState({ address: selected });
+  handleAddressChange = address => this.setState({ address });
+  handleAddressSelect = selected => this.setState({ address: selected });
 
   getValidData = (arrayData) => {
     let word = arrayData.name;
@@ -48,14 +48,14 @@ class BuzzWordInput extends Component {
     let count = arrayData.tweet_volume;
 
     let obj = {
-      id: id, //defined above class header
+      id: row_id, //defined above class header (see above)
       buzz_word: word,
       source_url: url,
       popularity_count: count,
     }
 
-    id += 1;
-    
+    row_id += 1;
+
     return obj;
   }
 
@@ -67,7 +67,7 @@ class BuzzWordInput extends Component {
     })
       .then(function (response) {
         let trendsArray = response.data[0].trends;
-        
+
         trendsArray.sort(popularityCompare);
         let dataHasChanged = isArrayEqual(self.state.data, trendsArray);
         let data_to_set = [];
@@ -97,8 +97,8 @@ class BuzzWordInput extends Component {
         <div style={{ display: 'inline-block' }}>
           <PlacesAutocomplete
             value={this.state.address}
-            onChange={this.handleAdressChange}
-            onSelect={this.handleAdressSelect}
+            onChange={this.handleAddressChange}
+            onSelect={this.handleAddressSelect}
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -113,14 +113,14 @@ class BuzzWordInput extends Component {
                 <div style={{ position: 'absolute', marginTop: 46 }} >
                   {loading && <MenuItem>Loading...</MenuItem>}
                   <Paper style={{ background: 'rgba(255,255,255, 1.0)' }} square>
-                  { suggestions.map(suggestion =>
-                    <MenuItem
-                      key={'item-' + suggestion.description}
-                      {...getSuggestionItemProps(suggestion)}
-                    >
-                      {suggestion.description}
-                    </MenuItem>
-                  )}
+                    {suggestions.map(suggestion =>
+                      <MenuItem
+                        key={'item-' + suggestion.description}
+                        {...getSuggestionItemProps(suggestion)}
+                      >
+                        {suggestion.description}
+                      </MenuItem>
+                    )}
                   </Paper>
                 </div>
               </div>
