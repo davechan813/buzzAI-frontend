@@ -17,6 +17,7 @@ class BuzzWord extends Component {
 	setProps = (name, val) => this.setState({ [name]: val });
 
 
+  // TODO: Add a progress bar when data is loading
 	render() {
 
 		const styleNotLoaded = {

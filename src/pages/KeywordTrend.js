@@ -12,6 +12,7 @@ class KeywordTrend extends Component {
 
 	setData = (data) => this.setState({data: data});
 
+	// TODO: Add a progress bar when data is loading
 	render() {
 		// This part similar as in BuzzWord.js
 		const styleNotLoaded = {

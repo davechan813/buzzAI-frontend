@@ -33,6 +33,7 @@ class DataDisplay extends React.Component {
     });
   };
 
+  // TODO: sort JOSN objects before rendering
   render() {
     const { classes, data } = this.props;
     // console.log(this.state);
