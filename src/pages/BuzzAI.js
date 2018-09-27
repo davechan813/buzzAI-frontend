@@ -24,5 +24,5 @@ class BuzzAI extends Component {
 		);
 	}
 }
-  
+
 export default BuzzAI;
