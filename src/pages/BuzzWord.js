@@ -20,7 +20,7 @@ class BuzzWord extends Component {
 			<div style={{ marginTop: 50 }}>
 				<BuzzWordInput setProps={this.setProps} />
 				{ this.state.data.length > 0 && 
-					<BuzzWordData data={this.state.data} address={this.state.address} />
+          <BuzzWordData data={this.state.data} address={this.state.address} />
 				}
 			</div>
 		);

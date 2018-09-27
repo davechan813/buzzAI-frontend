@@ -23,6 +23,7 @@ const styles = theme => (
     },
     paper: {
       padding: theme.spacing.unit * 2,
+      marginTop: 25,
       [theme.breakpoints.up('sm')]: {
         width: 500,
       },
