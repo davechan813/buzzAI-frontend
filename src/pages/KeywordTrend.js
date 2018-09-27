@@ -13,13 +13,25 @@ class KeywordTrend extends Component {
 	setData = (data) => this.setState({data: data});
 
 	render() {
+		// This part similar as in BuzzWord.js
+		const styleNotLoaded = {
+      padding: '10%'
+    };
+		const getStyle = () => {
+			if(this.state.data.length > 0){
+				return null;
+			} else {
+				return styleNotLoaded;
+			}
+		}
+
 		return (
-			<div>
+			<div style={getStyle()}>
 				<InputGroup setData={this.setData} />
 				{this.state.data.length > 0 && <DataDisplay data={this.state.data} />}
 			</div>
 		);
 	}
 }
-  
+
 export default KeywordTrend;
