@@ -40,7 +40,6 @@ class BuzzWord extends Component {
 
 				<BuzzWordInput setProps={this.setProps} />
 				{ this.state.data.length > 0 &&
-
 					<BuzzWordData data={this.state.data} address={this.state.address} />
 				}
 			</div>
