@@ -17,6 +17,7 @@ class BuzzWord extends Component {
 	setProps = (name, val) => this.setState({ [name]: val });
 
 
+  // TODO: Add a progress bar when data is loading
 	render() {
 
 		const styleNotLoaded = {
@@ -39,8 +40,13 @@ class BuzzWord extends Component {
 			<div style={getStyle()} id="buzz-word-unit">
 
 				<BuzzWordInput setProps={this.setProps} />
+<<<<<<< HEAD
 				{ this.state.data.length > 0 &&
 					<BuzzWordData data={this.state.data} address={this.state.address} />
+=======
+				{ this.state.data.length > 0 && 
+          <BuzzWordData data={this.state.data} address={this.state.address} />
+>>>>>>> 64371ed6d88d38aeb4ef91233f77116ab18fd2b3
 				}
 			</div>
 		);

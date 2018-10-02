@@ -13,6 +13,7 @@ class BuzzAI extends Component {
 
 	setData = (data) => this.setState({data: data});
 
+  // container page
 	render() {
 		return (
 			<div>

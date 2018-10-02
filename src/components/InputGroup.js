@@ -111,6 +111,12 @@ class InputGroup extends React.Component {
     }
   }
 
+  handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.handleSearch();
+    }
+  }
+
   setGeo = geo => this.setState({ geo: geo });
 
   render() {
@@ -127,6 +133,7 @@ class InputGroup extends React.Component {
             className={classes.textField}
             value={this.state.keyword}
             onChange={this.handleChange('keyword')}
+            onKeyDown={this.handleKeyPress} // listen for enter key pressd
             margin="normal"
             required
           />
