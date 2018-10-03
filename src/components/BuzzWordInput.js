@@ -136,7 +136,7 @@ class BuzzWordInput extends Component {
             className={classes.button}
             id="buzz-button"
           >
-            <span className={classes.buttonText}>Buzz!</span>
+            <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
           </Button>
         </div>
       </div>

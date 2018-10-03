@@ -1,5 +1,22 @@
-#buzz-button-buzzword {
+#buzz-button {
   margin-top: 5%;
+  margin-left: 100px;
+  color: blue;
+  background: transparent;
+  border: 2px solid #0099CC;
+  border-radius: 6px;
+  width: 200px;
+  height: 80px;
+  font-size: 300%;
+}
+
+#buzz-button:hover{
+  background-color: #008CBA;
+  color: white;
+}
+
+#buzz-button-text {
+  font-size: 90%;
 }
 
 * {
