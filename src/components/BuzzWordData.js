@@ -11,6 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
 
+import './BuzzWordData.css';
+
 const styles = theme => (
   {
     root: {
