@@ -23,7 +23,11 @@
 }
 
 #buzz-word-unit {
-
+  background-color: white;
+  /* margin: auto; */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 
 * {
@@ -32,4 +36,6 @@
 
 body {
   background-image: url(./lachlan-gowen-787977-unsplash.jpg);
+  backface-visibility: visible;
+  object-fit: cover;
 }
