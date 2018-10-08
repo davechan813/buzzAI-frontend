@@ -66,7 +66,7 @@ class BuzzWordData extends React.Component {
     rows.sort(popularityCompare);
     return (
 
-      <Grid container direction='column' justify='center' alignItems='center'>
+      <Grid container direction='column' justify='center' alignItems='center' id='grid-buzz-words'>
 
         <Paper
           className={classes.paper}>

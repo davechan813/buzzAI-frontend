@@ -1,13 +1,14 @@
 #buzz-button {
-  margin-top: 5%;
+  margin-top: 0%;
   margin-left: 100px;
   color: blue;
   background: transparent;
   border: 2px solid #0099CC;
   border-radius: 6px;
-  width: 200px;
-  height: 80px;
+  width: 130px;
+  height: 60px;
   font-size: 300%;
+  padding-bottom: 70px;
 }
 
 #buzz-button:hover{
@@ -16,7 +17,13 @@
 }
 
 #buzz-button-text {
-  font-size: 90%;
+  font-size: 65%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#buzz-word-unit {
+
 }
 
 * {
