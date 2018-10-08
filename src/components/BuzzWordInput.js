@@ -105,22 +105,32 @@ class BuzzWordInput extends Component {
                 <TextField
                   style={{ minWidth: 300, height: 30, marginTop: 16 }}
                   {...getInputProps({
-                    placeholder: 'Search Places...',
+                    placeholder: 'Search Cities or Countries...',
                     className: 'location-search-input',
                   })}
                   onKeyDown={this.handleKeyPress} // listen for enter key pressd
                 />
                 <div style={{ position: 'absolute', marginTop: 46 }} >
                   {loading && <MenuItem>Loading...</MenuItem>}
-                  <Paper style={{ background: 'rgba(255,255,255, 1.0)' }} square>
-                    {suggestions.map(suggestion =>
-                      <MenuItem
-                        key={'item-' + suggestion.description}
-                        {...getSuggestionItemProps(suggestion)}
-                      >
-                        {suggestion.description}
-                      </MenuItem>
-                    )}
+                  <Paper
+                    style={{ background: 'rgba(255,255,255, 1.0)', width: 300 }}
+                    square
+                  >
+                    {suggestions.map(suggestion => {
+                      if (suggestion.description.split(', ').length === 1 || // country name
+                          suggestion.description.split(', ').length === 3) { // city name
+                          return (
+                            <MenuItem
+                              key={'item-' + suggestion.description}
+                              {...getSuggestionItemProps(suggestion)}
+                            >
+                              {suggestion.description}
+                            </MenuItem>
+                          );
+                        } else {
+                          return undefined;
+                        }
+                    })}
                   </Paper>
                 </div>
               </div>

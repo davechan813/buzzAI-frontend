@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import BuzzAI from './pages/BuzzAI';
 import './App.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+      primary: {
+        main: '#EF5350',
+      }
+    }
+});
 
 class App extends Component {
   constructor(props) {
@@ -14,12 +23,16 @@ class App extends Component {
   setData = (data) => this.setState({data: data});
 
   render() {
+    // const { theme } = this.props;
+    console.log(theme);
     return (
-      <div className="App">
-        <BrowserRouter>
-          <BuzzAI />
-        </BrowserRouter>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <BrowserRouter>
+            <BuzzAI />
+          </BrowserRouter>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
