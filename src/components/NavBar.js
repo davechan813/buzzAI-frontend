@@ -7,30 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import HomeIcon from '@material-ui/icons/Home';
-import ListItemText from '@material-ui/core/ListItemText';
-import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import LocalMenu from './LocalMenu';
+import { Button } from '@material-ui/core';
 
 const styles = {
-  root: {
-    // flexGrow: 1,
-  },
-  flex: {
-    // flexGrow: 1,
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
   button: {
     float: 'right',
-  },
-  list: {
-    width: 250,
   },
 };
 
@@ -59,9 +45,21 @@ class NavBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography variant="title" color="inherit">
               BuzzAI
             </Typography>
+            <Button
+              color="inherit"
+              style={{ position: 'absolute', right: 30 }}
+            >
+              Signup
+            </Button>
+            <Button
+              color="inherit"
+              style={{ position: 'absolute', right: 130 }}
+            >
+              Login
+            </Button>
           </Toolbar>
         </AppBar>
 
@@ -72,28 +70,7 @@ class NavBar extends React.Component {
             onClick={this.toggleDrawer(false)}
             onKeyDown={this.toggleDrawer(false)}
           >
-            <div className={classes.list}>
-              <List component="nav">
-                <ListItem component="a" href="/" button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Home" />
-                </ListItem>
-                <ListItem component="a" href="/buzz" button>
-                  <ListItemIcon>
-                    <TrendingUpIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Top Buzz Words" />
-                </ListItem>
-                <ListItem component="a" href="/keyword" button>
-                  <ListItemIcon>
-                    <LocationSearchingIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Keyword Trends Search" />
-                </ListItem>
-              </List>
-            </div>
+            <LocalMenu />
           </div>
         </Drawer>
      

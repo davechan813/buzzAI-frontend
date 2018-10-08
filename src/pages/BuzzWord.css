@@ -22,6 +22,7 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 #buzz-word-unit {
   background-color: white;
   /* margin: auto; */
@@ -39,3 +40,8 @@ body {
   backface-visibility: visible;
   object-fit: cover;
 }
+=======
+/* #buzz-word-unit {
+  padding: 10%;
+} */
+>>>>>>> 179b59564975d5c8d958d9328bcc032dcdaf19d5
