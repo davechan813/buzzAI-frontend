@@ -1,5 +1,5 @@
 #buzz-button {
-  margin-top: 0%;
+  /* margin-top: 0%;
   margin-left: 100px;
   color: blue;
   background: transparent;
@@ -8,23 +8,23 @@
   width: 130px;
   height: 60px;
   font-size: 300%;
-  padding-bottom: 70px;
+  padding-bottom: 70px; */
+  margin-left: 100px;
 }
 
 #buzz-button:hover{
-  background-color: #008CBA;
-  color: white;
+  /* background-color: #008CBA;
+  color: white; */
 }
 
 #buzz-button-text {
-  font-size: 65%;
+  /* font-size: 65%;
   vertical-align: middle;
-  text-align: center;
+  text-align: center; */
 }
 
-<<<<<<< HEAD
 #buzz-word-unit {
-  background-color: white;
+  /* background-color: white; */
   /* margin: auto; */
   padding-left: 20px;
   padding-right: 20px;
@@ -36,12 +36,7 @@
 }
 
 body {
-  background-image: url(./lachlan-gowen-787977-unsplash.jpg);
+  /* background-image: url(./lachlan-gowen-787977-unsplash.jpg); */
   backface-visibility: visible;
   object-fit: cover;
 }
-=======
-/* #buzz-word-unit {
-  padding: 10%;
-} */
->>>>>>> 179b59564975d5c8d958d9328bcc032dcdaf19d5

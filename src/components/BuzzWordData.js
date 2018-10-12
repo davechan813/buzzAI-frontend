@@ -97,7 +97,7 @@ class BuzzWordData extends React.Component {
                           {index + 1 + page * rowsPerPage}
                         </TableCell>
                         <TableCell component="th" scope="row">
-                          <a href={row.source_url}>{row.buzz_word}</a>
+                          <a href={row.source_url} target="_blank">{row.buzz_word}</a>
                         </TableCell>
                         <TableCell component="th" scope="row">
                           {row.popularity_count}
