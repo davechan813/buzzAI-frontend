@@ -22,3 +22,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+body {
+  background-image: linear-gradient(to bottom right, #fec3c3, #fc2222);
+  backface-visibility: visible;
+  object-fit: cover;
+}

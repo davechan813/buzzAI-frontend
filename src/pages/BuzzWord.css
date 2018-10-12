@@ -1,6 +1,5 @@
 #buzz-button {
   /* margin-top: 0%;
-  margin-left: 100px;
   color: blue;
   background: transparent;
   border: 2px solid #0099CC;
@@ -33,10 +32,4 @@
 
 * {
   font-family: Lato;
-}
-
-body {
-  /* background-image: url(./lachlan-gowen-787977-unsplash.jpg); */
-  backface-visibility: visible;
-  object-fit: cover;
 }
