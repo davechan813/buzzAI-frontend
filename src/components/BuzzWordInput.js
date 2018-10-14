@@ -117,19 +117,28 @@ class BuzzWordInput extends Component {
                     square
                   >
                     {suggestions.map(suggestion => {
-                      if (suggestion.description.split(', ').length === 1 || // country name
-                          suggestion.description.split(', ').length === 3) { // city name
-                          return (
-                            <MenuItem
-                              key={'item-' + suggestion.description}
-                              {...getSuggestionItemProps(suggestion)}
-                            >
-                              {suggestion.description}
-                            </MenuItem>
-                          );
-                        } else {
-                          return undefined;
-                        }
+                      console.log(suggestion);
+                      return (
+                        <MenuItem
+                          key={'item-' + suggestion.description}
+                          {...getSuggestionItemProps(suggestion)}
+                        >
+                          {suggestion.description}
+                        </MenuItem>
+                      );
+                      // if (suggestion.description.split(', ').length === 1 || // country name
+                      //     suggestion.description.split(', ').length === 3) { // city name
+                      //   return (
+                      //     <MenuItem
+                      //       key={'item-' + suggestion.description}
+                      //       {...getSuggestionItemProps(suggestion)}
+                      //     >
+                      //       {suggestion.description}
+                      //     </MenuItem>
+                      //   );
+                      // } else {
+                      //   return undefined;
+                      // }
                     })}
                   </Paper>
                 </div>
