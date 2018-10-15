@@ -103,7 +103,7 @@ class BuzzWordInput extends Component {
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <TextField
-                  style={{ minWidth: 300, height: 30, marginTop: 16, backgroundColor: 'white',
+                  style={{ minWidth: 300, height: 30, marginTop: 16, backgroundColor: 'rgba(0, 0, 0, 0)',
                     padding: ''}}
                   {...getInputProps({
                     placeholder: 'Search Cities or Countries...',
