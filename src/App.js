@@ -23,8 +23,6 @@ class App extends Component {
   setData = (data) => this.setState({data: data});
 
   render() {
-    // const { theme } = this.props;
-    console.log(theme);
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">

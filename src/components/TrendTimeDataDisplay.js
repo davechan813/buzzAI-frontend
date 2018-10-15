@@ -4,8 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import DataTable from './DataTable';
-import DataChart from './DataChart';
+// import DataTable from './DataTable';
+// import BarChart from './BarChart';
+// import { Typography } from '@material-ui/core';
+import LineChart from './LineChart';
 
 const styles = theme => ({
   root: {
@@ -17,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-class DataDisplay extends React.Component {
+class TrendTimeDataDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,26 +35,14 @@ class DataDisplay extends React.Component {
     });
   };
 
-  // TODO: sort JOSN objects before rendering
   render() {
     const { classes, data } = this.props;
-    // console.log(this.state);
+    console.log(data);
     return (
       <div className={classes.root}>
         <FormGroup row style={{ textAlign: 'center' }}>
           <FormControlLabel
             style={{ position: 'relative', marginLeft: 'auto' }}
-            control={
-              <Checkbox
-                checked={this.state.table}
-                onChange={this.handleChange('table')}
-                color="primary"
-              />
-            }
-            label="Table"
-          />
-          <FormControlLabel
-            style={{ position: 'relative' }}
             control={
               <Checkbox
                 checked={this.state.chart}
@@ -74,8 +64,7 @@ class DataDisplay extends React.Component {
             label="Map"
           />
         </FormGroup>
-        {this.state.table && <DataTable data={data} />}
-        {this.state.chart && <DataChart data={data} />}
+        {this.state.chart && <LineChart data={data} />}
       </div>
     );
   }
@@ -83,8 +72,8 @@ class DataDisplay extends React.Component {
 }
 
 
-DataDisplay.propTypes = {
+TrendTimeDataDisplay.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DataDisplay);
+export default withStyles(styles)(TrendTimeDataDisplay);
