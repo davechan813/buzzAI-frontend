@@ -85,7 +85,6 @@ class BuzzWordData extends React.Component {
 
             <TableBody>
               {
-
                 rows
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {

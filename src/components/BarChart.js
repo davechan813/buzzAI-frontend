@@ -11,10 +11,10 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+// import FormControl from '@material-ui/core/FormControl';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
   group: {
@@ -58,10 +58,11 @@ class DataChart extends React.Component {
   };
 
   render() {
-    const { classes, data } = this.props;
+    const { data } = this.props;
+    console.log(data);
     return (
       <div>
-        <div style={{ marginTop: 20 }}>
+        {/* <div style={{ marginTop: 20 }}>
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="method">Sort By</InputLabel>
             <Select
@@ -90,10 +91,10 @@ class DataChart extends React.Component {
               <MenuItem value={1}>Ascending</MenuItem>
             </Select>
           </FormControl>
-        </div>
+        </div> */}
         <BarChart
           width={800}
-          height={360}
+          height={450}
           data={sortData(data, this.state.method, this.state.type)}
           style={{ position: 'relative', margin: 'auto' }}
         >
@@ -101,8 +102,8 @@ class DataChart extends React.Component {
           <XAxis name='Name' dataKey="geoName" interval='preserveStart' />
           <YAxis name='Hit' dataKey="hit" />
           <Tooltip />
-          <Bar dataKey="hit" fill="#3748AC" />
-          <Brush dataKey='geoName' height={30} stroke="#3748AC" />
+          <Bar dataKey="hit" fill="#EF5351" />
+          <Brush dataKey='geoName' height={30} stroke="#EF5351" />
         </BarChart>
       </div>
     );

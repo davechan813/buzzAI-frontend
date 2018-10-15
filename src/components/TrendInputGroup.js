@@ -73,6 +73,10 @@ class InputGroup extends React.Component {
   }
 
   handleChange = name => event => {
+    if (name === 'function') {
+      this.props.setParentState('function', event.target.value);
+      this.props.setParentState('data', []);
+    }
     this.setState({
       [name]: event.target.value,
     });
@@ -86,8 +90,11 @@ class InputGroup extends React.Component {
 
   handleSearch = () => {
     let self = this;
-    // axios.post('http://localhost:3000/popularity', {
-    axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/popularity', {
+    let url = self.state.function === 'region' ? 
+              'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/popularity' : 
+              'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/interestOverTime';
+
+    axios.post(url, {
       keyword: self.state.keyword,
       startTime: self.state.startTime,
       endTime: self.state.endTime,
@@ -95,8 +102,13 @@ class InputGroup extends React.Component {
       geo: self.state.geo,
     })
     .then(function (response) {
-      // console.log("the response is:", response.data.default);
-      self.props.setData(response.data.default.geoMapData);
+      console.log('original data:', response);
+      // console.log("the response is:", response.data.default.geoMapData.slice(0, 50));
+      if (self.state.function === 'region') {
+        self.props.setParentState('data', response.data.default.geoMapData.slice(0, 50));
+      } else {
+        self.props.setParentState('data', response.data.default.timelineData);
+      }
     })
     .catch(function (error) {
       console.log(error);
@@ -191,40 +203,44 @@ class InputGroup extends React.Component {
             />
           </div>
 
-          <div style={{ display: 'inline-block' }} className={classes.formControl}>
-            <FormLabel component="legend">Geo Info</FormLabel>
-            <FormControlLabel
-              style={{ marginTop: 4 }}
-              control={
-                <Switch
-                  color='primary'
-                  checked={this.state.geoInfo}
-                  onChange={this.handleChecked('advanced')}
-                />
+          {
+            this.state.function === 'region' && 
+            <div style={{ display: 'inline-block' }} className={classes.formControl}>
+              <FormLabel component="legend">Geo Info</FormLabel>
+              <FormControlLabel
+                style={{ marginTop: 4 }}
+                control={
+                  <Switch
+                    color='primary'
+                    checked={this.state.geoInfo}
+                    onChange={this.handleChecked('advanced')}
+                  />
+                }
+                label="Advanced Search"
+              />
+              <br />
+              { !this.state.advanced ?
+                <FormControl>
+                  <InputLabel htmlFor="resolution">Resolution</InputLabel>
+                  <Select
+                    style={{ minWidth: 160, textAlign: 'left' }}
+                    value={this.state.resolution}
+                    onChange={this.handleChange('resolution')}
+                    inputProps={{
+                      name: 'resolution',
+                      id: 'resolution',
+                    }}
+                  >
+                    <MenuItem value={'COUNTRY'}>Country and Region</MenuItem>
+                    <MenuItem value={'CITY'}>City</MenuItem>
+                    <MenuItem value={'DMA'}>Designated Market Area (DMA)</MenuItem>
+                  </Select>
+                </FormControl> :
+                <PlaceSelector setGeo={this.setGeo} />
               }
-              label="Advanced Search"
-            />
-            <br />
-            { !this.state.advanced ?
-              <FormControl>
-                <InputLabel htmlFor="resolution">Resolution</InputLabel>
-                <Select
-                  style={{ minWidth: 160, textAlign: 'left' }}
-                  value={this.state.resolution}
-                  onChange={this.handleChange('resolution')}
-                  inputProps={{
-                    name: 'resolution',
-                    id: 'resolution',
-                  }}
-                >
-                  <MenuItem value={'COUNTRY'}>Country and Region</MenuItem>
-                  <MenuItem value={'CITY'}>City</MenuItem>
-                  <MenuItem value={'DMA'}>Designated Market Area (DMA)</MenuItem>
-                </Select>
-              </FormControl> :
-              <PlaceSelector setGeo={this.setGeo} />
-            }
-          </div>
+            </div>
+          }
+          
 
         </div>
 

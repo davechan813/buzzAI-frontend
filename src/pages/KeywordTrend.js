@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import InputGroup from '../components/InputGroup';
-import DataDisplay from '../components/DataDisplay';
+import TrendInputGroup from '../components/TrendInputGroup';
+import TrendTimeDataDisplay from '../components/TrendTimeDataDisplay';
+import TrendRegionDataDisplay from '../components/TrendRegionDataDisplay';
 
 class KeywordTrend extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: [],
+      data: [],
+      function: 'region',
 		};
 	}
 
-	setData = (data) => this.setState({data: data});
+	setParentState = (name, value) => this.setState({ [name]: value });
 
 	// TODO: Add a progress bar when data is loading
 	render() {
@@ -26,10 +28,19 @@ class KeywordTrend extends Component {
 			}
 		}
 
+    console.log(this.state);
+
 		return (
 			<div style={getStyle()}>
-				<InputGroup setData={this.setData} />
-				{this.state.data.length > 0 && <DataDisplay data={this.state.data} />}
+				<TrendInputGroup setParentState={this.setParentState} />
+        {this.state.function === 'region' &&
+         this.state.data.length > 0 && 
+         <TrendRegionDataDisplay data={this.state.data} />
+        }
+        {this.state.function === 'time' &&
+         this.state.data.length > 0 && 
+         <TrendTimeDataDisplay data={this.state.data} />
+        }
 			</div>
 		);
 	}

@@ -37,13 +37,13 @@ class LocalMenu extends React.Component {
             <ListItemIcon>
               <TrendingUpIcon />
             </ListItemIcon>
-            <ListItemText primary="Top Buzz Words" />
+            <ListItemText primary="Top Buzzwords" />
           </ListItem>
           <ListItem component="a" href="/keyword" button>
             <ListItemIcon>
               <LocationSearchingIcon />
             </ListItemIcon>
-            <ListItemText primary="Keyword Trends Search" />
+            <ListItemText primary="Latest Trends" />
           </ListItem>
           <Divider />
           <ListItem component="a" href="/team" button>
