@@ -60,23 +60,22 @@ class BuzzWordData extends React.Component {
   }
 
   render() {
-    const { classes, data, address } = this.props;
+    const { data, address, setParentState } = this.props;
     const { page, rowsPerPage } = this.state;
     let rows = data.slice(); // immutability ftw
     rows.sort(popularityCompare);
     return (
 
-      <Grid container direction='column' justify='center' alignItems='center' id='grid-buzz-words'>
+      <Grid container direction='column' justify='center' alignItems='flex-start' id='grid-buzz-words'>
 
-        <Paper
-          className={classes.paper}>
-          <div className={classes.title}>
+        <Paper>
+          <div>
             <Typography variant="title" id="tableTitle" >
               Buzzwords in {address}
             </Typography>
           </div>
 
-          <Table className={classes.table}>
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Rank</TableCell>
@@ -95,8 +94,8 @@ class BuzzWordData extends React.Component {
                         <TableCell component="th" scope="row">
                           {index + 1 + page * rowsPerPage}
                         </TableCell>
-                        <TableCell component="th" scope="row">
-                          <a href={row.source_url} target="_blank">{row.buzz_word}</a>
+                        <TableCell onClick={() => setParentState(row.buzz_word)} component="th" scope="row">
+                          {row.buzz_word}
                         </TableCell>
                         <TableCell component="th" scope="row">
                           {row.popularity_count}
@@ -128,7 +127,6 @@ class BuzzWordData extends React.Component {
     );
   }
 }
-
 BuzzWordData.propTypes = {
   classes: PropTypes.object.isRequired,
 };

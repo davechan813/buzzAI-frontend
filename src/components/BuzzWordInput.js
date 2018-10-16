@@ -63,11 +63,11 @@ class BuzzWordInput extends Component {
 
     console.log('self.state.country:', self.state.country);
     console.log('self.state.city:', self.state.city);
-
+    ;
     axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
-      placeName: self.state.country !== '' && self.state.city !== '' ? 
-                 self.state.city + ', ' + self.state.country :
-                 self.state.country,
+      placeName: self.state.country !== '' && self.state.city !== '' ?
+        self.state.city + ', ' + self.state.country :
+        self.state.country,
     })
       .then(function (response) {
         let trendsArray = response.data[0].trends;
