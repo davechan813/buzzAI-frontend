@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import deburr from 'lodash/deburr';
-import Autosuggest from 'react-autosuggest';
+//import Autosuggest from 'react-autosuggest';
+import * as Autosuggest from "react-autosuggest";
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
@@ -113,7 +114,7 @@ class IntegrationAutosuggest extends React.Component {
   };
 
   handleChange = (name) => (event, { newValue }) => {
-    this.props.setCityInParent(newValue);    
+    this.props.setCityInParent(newValue);
     this.setState({
       [name]: newValue,
     });
