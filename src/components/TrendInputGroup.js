@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { Button, Switch } from '@material-ui/core';
+import { Button, Switch, CircularProgress } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -33,7 +33,9 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-    width: 80,
+    // width: 80,
+    width: 100,
+    height: 45,
   },
   buttonText: {
     fontSize: 15,
@@ -68,7 +70,8 @@ class InputGroup extends React.Component {
       resolution: 'COUNTRY',
       startTime: moment(new Date(new Date().setFullYear(new Date().getFullYear() - 1))).format('YYYY-MM-DD'),
       endTime: moment(new Date()),
-      geo: ''
+      geo: '',
+      loading: false
     };
   }
 
@@ -93,7 +96,7 @@ class InputGroup extends React.Component {
     let url = self.state.function === 'region' ? 
               'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/popularity' : 
               'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/interestOverTime';
-
+    self.setState({ loading: true });
     axios.post(url, {
       keyword: self.state.keyword,
       startTime: self.state.startTime,
@@ -103,6 +106,7 @@ class InputGroup extends React.Component {
     })
     .then(function (response) {
       console.log('original data:', response);
+      self.setState({ loading: false });
       // console.log("the response is:", response.data.default.geoMapData.slice(0, 50));
       if (self.state.function === 'region') {
         self.props.setParentState('data', response.data.default.geoMapData.slice(0, 50));
@@ -149,15 +153,18 @@ class InputGroup extends React.Component {
             margin="normal"
             required
           />
-          <Button
-            onClick={this.handleSearch}
-            variant="contained"
-            size="medium"
-            color="primary"
-            className={classes.button} id="buzz-button"
-          >
-            <span className={classes.buttonText} >Buzz!</span>
-          </Button>
+          { this.state.loading ? 
+            <CircularProgress className={classes.button} /> : 
+            <Button
+              onClick={this.handleSearch}
+              variant="contained"
+              size="medium"
+              color="primary"
+              className={classes.button}
+            >
+              <span className={classes.buttonText}>Buzz!</span>
+            </Button>
+          }
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>

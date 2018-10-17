@@ -18,8 +18,8 @@ class KeywordTrend extends Component {
 	render() {
 		// This part similar as in BuzzWord.js
 		const styleNotLoaded = {
-      padding: '10%'
-    };
+			padding: '10%'
+		};
 		const getStyle = () => {
 			if(this.state.data.length > 0){
 				return null;
