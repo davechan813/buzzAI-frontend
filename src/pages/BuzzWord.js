@@ -36,7 +36,9 @@ class BuzzWord extends Component {
 			} else {
 				return styleNotLoaded;
 			}
-		}
+    }
+    
+    console.log(this.state);
 
 		return (
 			<div style={getStyle()} id="buzz-word-unit">
