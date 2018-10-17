@@ -11,80 +11,91 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 
 class TweetView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {},
+    constructor(props) {
+        super(props);
+        this.state = {
+            tweets: [],
+            loading: false,
+        }
     }
-  }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //     // console.log(this.state, nextState);
-  //     // console.log(this.props, nextProps);
-  //     return nextState.data !== this.state.data;
-  // }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     // console.log(this.state, nextState);
+    //     // console.log(this.props, nextProps);
+    //     return nextState.data !== this.state.data;
+    // }
 
-  componentDidMount() {
-    this.generateTweets();
-  }
 
-  generateTweets = () => {
-    let self = this;
-    let url = 'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/loadTweets?query=' + self.props.queryWord;
-    
-    console.log("in generateTweets");
-    
-    axios.get(url, { crossdomain: true })
-    .then(res => {
-        console.log('got data from ', url);
-        self.setState({ data: res.data });
-        console.log('the axios buzzword tweet content data is...', res.data.statuses);
-    })
-    .catch(e => {
-        console.log('error getting tweets', e);
-    })
-  }
+    generateTweets = () => {
+        this.setState({ loading: true });
+        let self = this;
+        let url = 'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/loadTweets?query=' + self.props.queryWord.replace(' ', '+');
 
-  render() {
-    // this.generateTweets();
-    console.log(this.state.data);
-    return (
-      <Grid container direction='column' justify='center' alignItems='flex-end'>
-        <Paper>
-          <div>
-            <Typography variant="title" id="tableTitle" >
-              Twitter Users on {this.props.queryWord}
-            </Typography>
-          </div>
+        console.log("in generateTweets");
 
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Recent Tweets</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {
-                <TableRow>
-                  <TableCell></TableCell>
-                </TableRow>
-                // rows
-                //     .map((row) => {
-                //         return (
-                //             <TableRow key={row.id}>
-                //                 <TableCell onClick={this.props.setParentState(row.buzz_word)} component="th" scope="row">
-                //                     {row.buzz_word}
-                //                 </TableCell>
-                //             </TableRow>
-                //         );
-                //     })
-              }
-            </TableBody>
-          </Table>
-        </Paper>
-      </Grid>
-    );
-  }
+        axios.get(url, { crossdomain: true })
+            .then(res => {
+                console.log('got data from ', url);
+
+                self.setState({ tweets: res.data.statuses, loading: false, });
+                console.log('the axios buzzword tweet content data is...', res.data.statuses);
+            })
+            .catch(e => {
+                console.log('error getting tweets', e);
+            })
+    }
+
+    componentDidMount() {
+        this.generateTweets();
+    }
+
+
+    render() {
+        const { tweets, loading } = this.state;
+
+        if (loading === false) {
+            return (
+                <Grid container direction='column' justify='center' alignItems='flex-end'>
+                    <Paper>
+                        <div>
+                            <Typography variant="title" id="tableTitle" >
+                                Twitter Users on {this.props.queryWord}
+                            </Typography>
+                        </div>
+
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Recent Tweets</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+
+                                <TableRow>
+                                    <TableCell></TableCell>
+                                </TableRow>
+                                {
+                                    tweets
+                                        .map((row, index) => {
+                                            return (
+                                                <TableRow key={row.id_str}>
+                                                    <TableCell>
+                                                        {row.text}
+                                                    </TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+
+                                }
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                </Grid>
+            );
+        }
+
+        else return (<div> Loading... </div>);
+    }
 }
 
 
