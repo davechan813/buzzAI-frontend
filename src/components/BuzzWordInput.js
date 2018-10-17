@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { Button, CircularProgress } from '@material-ui/core';
 import axios from 'axios';
 import { isEqual, isEmpty, differenceWith } from 'lodash';
 import CountryAutoComplete from './CountryAutoComplete';
@@ -37,7 +37,8 @@ class BuzzWordInput extends Component {
     super(props);
     this.state = {
       country: '',
-      city: ''
+      city: '',
+      loading: false
     };
   }
 
@@ -61,8 +62,10 @@ class BuzzWordInput extends Component {
   handleSearch = () => {
     let self = this;
 
-    console.log('self.state.country:', self.state.country);
-    console.log('self.state.city:', self.state.city);
+    // console.log('self.state.country:', self.state.country);
+    // console.log('self.state.city:', self.state.city);
+
+    self.setState({ loading: true });
 
     axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
       placeName: self.state.country !== '' && self.state.city !== '' ? 
@@ -82,6 +85,7 @@ class BuzzWordInput extends Component {
         }
         self.props.setProps('data', data_to_set); // set data to its parent's state so data can be passed to BuzzWordData
         self.props.setProps('address', response.data[0].locations[0].name); // set data to its parent's state so data can be passed to BuzzWordData
+        self.setState({ loading: false });
       })
       .catch(function (error) {
         console.log(error);
@@ -110,16 +114,19 @@ class BuzzWordInput extends Component {
           />
         </div>
         <div style={{ display: 'inline-block' }}>
-          <Button
+          { this.state.loading ? 
+            <CircularProgress /> :
+            <Button
             onClick={this.handleSearch}
             variant="contained"
             size="medium"
             color="primary"
             className={classes.button}
-            id="buzz-button"
+            // id="buzz-button"
           >
             <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
           </Button>
+        }
         </div>
       </div>
     );

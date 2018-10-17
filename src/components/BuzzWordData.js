@@ -35,6 +35,7 @@ const styles = theme => (
       [theme.breakpoints.up('xl')]: {
         width: 900,
       },
+      // backgroundColor: 'rgba(0, 0, 0, 0)',
     },
   });
 
