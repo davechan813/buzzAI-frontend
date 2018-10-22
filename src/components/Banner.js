@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
+import './Banner.css';
 
 class Banner extends Component {
 	constructor(props) {
@@ -10,10 +11,11 @@ class Banner extends Component {
 	render() {
 		return (
 			<div>
-				<Typography variant='display2'>Building it now</Typography>
+			<img src="/lightscape-735108-unsplash.jpg" width="1500" height="800" />
+				<h1> h </h1>
 			</div>
 		);
 	}
 }
-  
+
 export default Banner;
