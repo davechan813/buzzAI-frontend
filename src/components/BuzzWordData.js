@@ -21,6 +21,7 @@ const styles = theme => (
     },
     title: {
       flex: '0 0 auto',
+      padding: '10px',
     },
   });
 
@@ -46,7 +47,7 @@ class BuzzWordData extends React.Component {
   }
 
   render() {
-    const { data, address, setParentState } = this.props;
+    const { classes, data, address, setParentState } = this.props;
     const { page, rowsPerPage } = this.state;
     let rows = data.slice(); // immutability ftw
     rows.sort(popularityCompare);
@@ -54,9 +55,9 @@ class BuzzWordData extends React.Component {
 
 
 
-      <Paper>
+      <Paper classes={classes.root}>
         <div>
-          <Typography variant="title" id="tableTitle" >
+          <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
             Buzzwords in {address}
           </Typography>
         </div>

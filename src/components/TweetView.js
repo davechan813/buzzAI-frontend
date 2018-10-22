@@ -9,6 +9,21 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => (
+    {
+        root: {
+            margin: theme.spacing.unit * 3,
+            flexWrap: 'wrap',
+            overflowX: 'auto',
+        },
+        title: {
+            flex: '0 0 auto',
+            padding: '10px',
+        },
+    });
+
 
 class TweetView extends React.Component {
     constructor(props) {
@@ -52,13 +67,14 @@ class TweetView extends React.Component {
 
     render() {
         const { tweets, loading } = this.state;
+        const { classes } = this.props;
 
         if (loading === false) {
             return (
                 <Grid container direction='column' justify='center' alignItems='flex-end'>
                     <Paper>
                         <div>
-                            <Typography variant="title" id="tableTitle" >
+                            <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
                                 Twitter Users on {this.props.queryWord}
                             </Typography>
                         </div>
@@ -99,4 +115,4 @@ class TweetView extends React.Component {
 
 
 
-export default (TweetView);
+export default withStyles(styles)(TweetView);

@@ -4,6 +4,18 @@ import BuzzWordInput from '../components/BuzzWordInput';
 import './BuzzWord.css';
 import TweetView from '../components/TweetView';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	paper: {
+		padding: theme.spacing.unit * 2,
+		textAlign: 'center',
+	},
+});
+
 class BuzzWord extends Component {
 	constructor(props) {
 		super(props);
@@ -39,20 +51,21 @@ class BuzzWord extends Component {
 		}
 
 		console.log(this.state);
+		const { classes } = this.props;
 
 		return (
 			<div style={getStyle()} id="buzz-word-unit">
 				<BuzzWordInput setProps={this.setProps} />
-				<Grid container direction='row' justify='center' alignItems='flex-start' id='grid-buzz-words'>
+				<Grid container direction='row' justify='center' alignItems='flex-start' id='grid-buzz-words' spacing={8} classes={{ root: classes.root }}>
 
-					<Grid item>
+					<Grid item xs={12} md={6}>
 						{
 							this.state.data.length > 0 &&
 							<BuzzWordData data={this.state.data} address={this.state.address} setParentState={this.setParentState} />
 						}
 					</Grid>
 
-					<Grid item>
+					<Grid item xs={12} md={6}>
 
 						{
 							this.state.clicked === true && <TweetView queryWord={this.state.word} />
@@ -65,4 +78,4 @@ class BuzzWord extends Component {
 	}
 }
 
-export default BuzzWord;
+export default withStyles(styles)(BuzzWord);
