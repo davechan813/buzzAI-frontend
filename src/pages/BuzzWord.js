@@ -3,7 +3,7 @@ import BuzzWordData from '../components/BuzzWordData';
 import BuzzWordInput from '../components/BuzzWordInput';
 import './BuzzWord.css';
 import TweetView from '../components/TweetView';
-
+import Grid from '@material-ui/core/Grid';
 class BuzzWord extends Component {
 	constructor(props) {
 		super(props);
@@ -36,20 +36,30 @@ class BuzzWord extends Component {
 			} else {
 				return styleNotLoaded;
 			}
-    }
-    
-    console.log(this.state);
+		}
+
+		console.log(this.state);
 
 		return (
 			<div style={getStyle()} id="buzz-word-unit">
-
 				<BuzzWordInput setProps={this.setProps} />
-				{this.state.data.length > 0 &&
-					<BuzzWordData data={this.state.data} address={this.state.address} setParentState={this.setParentState} />
-				}
+				<Grid container direction='row' justify='center' alignItems='flex-start' id='grid-buzz-words'>
 
-				{this.state.clicked === true && <TweetView queryWord={this.state.word} />}
+					<Grid item>
+						{
+							this.state.data.length > 0 &&
+							<BuzzWordData data={this.state.data} address={this.state.address} setParentState={this.setParentState} />
+						}
+					</Grid>
 
+					<Grid item>
+
+						{
+							this.state.clicked === true && <TweetView queryWord={this.state.word} />
+						}
+					</Grid>
+
+				</Grid >
 			</div>
 		);
 	}

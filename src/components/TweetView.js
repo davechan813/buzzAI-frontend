@@ -31,7 +31,7 @@ class TweetView extends React.Component {
         let self = this;
         let url = 'http://buzzai-env-2.us-east-2.elasticbeanstalk.com/loadTweets?query=' + self.props.queryWord.replace(' ', '+');
 
-        console.log("in generateTweets");
+        console.log("in generateTweets", url);
 
         axios.get(url, { crossdomain: true })
             .then(res => {
@@ -85,7 +85,6 @@ class TweetView extends React.Component {
                                                 </TableRow>
                                             );
                                         })
-
                                 }
                             </TableBody>
                         </Table>
