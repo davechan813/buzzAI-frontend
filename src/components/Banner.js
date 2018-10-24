@@ -11,8 +11,12 @@ class Banner extends Component {
 	render() {
 		return (
 			<div>
-			<img src="/lightscape-735108-unsplash.jpg" width="1500" height="800" />
-				<h1> h </h1>
+				<header className="landing-page-header">
+					<div>
+						<h1 className="landing-page-text">vuSearch</h1>
+						<h3 className="landing-page-text"> The new AI B2B solution in e-commerce. </h3>
+					</div>
+				</header>
 			</div>
 		);
 	}
