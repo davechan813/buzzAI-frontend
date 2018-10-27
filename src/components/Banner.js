@@ -14,7 +14,7 @@ class Banner extends Component {
 				<header className="landing-page-header">
 					<div>
 						<h1 className="landing-page-text">vuSearch</h1>
-						<h3 className="landing-page-text"> The new AI B2B solution in e-commerce. </h3>
+						<h3 className="landing-page-text"> The new AI B2B solution for offline retails. </h3>
 					</div>
 				</header>
 			</div>
