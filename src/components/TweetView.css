@@ -1,0 +1,22 @@
+.list {
+  height: 100vh;
+  background: #1DA1F3;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.item {
+    background: white;
+    color: black;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    opacity: 0;
+    margin-bottom: 10px;
+}
+

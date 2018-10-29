@@ -1,15 +1,17 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import TablePagination from '@material-ui/core/TablePagination';
-import Typography from '@material-ui/core/Typography';
+// import Grid from '@material-ui/core/Grid';
+// import Table from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
+// import TableCell from '@material-ui/core/TableCell';
+// import TableHead from '@material-ui/core/TableHead';
+// import TableRow from '@material-ui/core/TableRow';
+// import Paper from '@material-ui/core/Paper';
+// import TablePagination from '@material-ui/core/TablePagination';
+// import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core';
+import posed from 'react-pose';
+import './TweetView.css';
 
 const styles = theme => (
     {
@@ -24,22 +26,32 @@ const styles = theme => (
         },
     });
 
+const config = {
+    open: {
+        x: '0%',
+        delayChildren: 200,
+        staggerChildren: 50
+    },
+    closed: { x: '-100%', delay: 300 }
+}
+const childConfig = {
+    open: { y: 0, opacity: 1 },
+    closed: { y: 20, opacity: 0 }
+}
 
-class TweetView extends React.Component {
+
+const Parent = posed.ul(config)
+const Child = posed.li(childConfig)
+
+class TweetView extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             tweets: [],
             loading: false,
+            isOpen: false,
         }
     }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     // console.log(this.state, nextState);
-    //     // console.log(this.props, nextProps);
-    //     return nextState.data !== this.state.data;
-    // }
-
 
     generateTweets = () => {
         this.setState({ loading: true });
@@ -62,54 +74,65 @@ class TweetView extends React.Component {
 
     componentDidMount() {
         this.generateTweets();
+
+        setTimeout(this.toggle, 200);
     }
 
 
+    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+
+
     render() {
-        const { tweets, loading } = this.state;
+        const { tweets, loading, isOpen } = this.state;
         const { classes } = this.props;
 
-        if (loading === false) {
-            return (
-                <Grid container direction='column' justify='center' alignItems='flex-end'>
-                    <Paper>
-                        <div>
-                            <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
-                                Twitter Users on {this.props.queryWord}
-                            </Typography>
-                        </div>
 
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Recent Tweets</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
+        return (
 
-                                <TableRow>
-                                    <TableCell></TableCell>
-                                </TableRow>
-                                {
-                                    tweets
-                                        .map((row, index) => {
-                                            return (
-                                                <TableRow key={row.id_str}>
-                                                    <TableCell>
-                                                        {row.text}
-                                                    </TableCell>
-                                                </TableRow>
-                                            );
-                                        })
-                                }
-                            </TableBody>
-                        </Table>
-                    </Paper>
-                </Grid>
-            );
-        }
+            <div>
+                <Parent className='list' pose={isOpen ? 'open' : 'closed'}>
+                    {tweets.map(tweet => <Child key={tweet.id_str} className='item'>{tweet.text}</Child>)}
+                </Parent>
+                {/* <Grid container direction='column' justify='center' alignItems='flex-end' className='root'>
+                        <Paper>
+                            <div>
+                                <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
+                                    Twitter Users on {this.props.queryWord}
+                                </Typography>
+                            </div>
 
-        else return (<div> Loading... </div>);
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Recent Tweets</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+
+                                    <TableRow>
+                                        <TableCell></TableCell>
+                                    </TableRow>
+                                    {
+                                        tweets
+                                            .map((row, index) => {
+                                                return (
+                                                    <TableRow key={row.id_str}>
+                                                        <TableCell>
+                                                            {row.text}
+                                                        </TableCell>
+                                                    </TableRow>
+                                                );
+                                            })
+                                    }
+                                </TableBody>
+                            </Table>
+                        </Paper>
+                    </Grid > */}
+            </div>
+        );
+
+
+        // else return (<div> Loading... </div>);
     }
 }
 
