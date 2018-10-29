@@ -26,7 +26,7 @@ const styles = theme => (
         },
     });
 
-const config = {
+const parentConfig = {
     open: {
         x: '0%',
         delayChildren: 200,
@@ -34,13 +34,14 @@ const config = {
     },
     closed: { x: '-100%', delay: 300 }
 }
+
 const childConfig = {
     open: { y: 0, opacity: 1 },
     closed: { y: 20, opacity: 0 }
 }
 
 
-const Parent = posed.ul(config)
+const Parent = posed.ul(parentConfig)
 const Child = posed.li(childConfig)
 
 class TweetView extends React.PureComponent {
@@ -93,41 +94,6 @@ class TweetView extends React.PureComponent {
                 <Parent className='list' pose={isOpen ? 'open' : 'closed'}>
                     {tweets.map(tweet => <Child key={tweet.id_str} className='item'>{tweet.text}</Child>)}
                 </Parent>
-                {/* <Grid container direction='column' justify='center' alignItems='flex-end' className='root'>
-                        <Paper>
-                            <div>
-                                <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
-                                    Twitter Users on {this.props.queryWord}
-                                </Typography>
-                            </div>
-
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Recent Tweets</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                    </TableRow>
-                                    {
-                                        tweets
-                                            .map((row, index) => {
-                                                return (
-                                                    <TableRow key={row.id_str}>
-                                                        <TableCell>
-                                                            {row.text}
-                                                        </TableCell>
-                                                    </TableRow>
-                                                );
-                                            })
-                                    }
-                                </TableBody>
-                            </Table>
-                        </Paper>
-                    </Grid > */}
             </div>
         );
 
