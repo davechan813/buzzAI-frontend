@@ -6,15 +6,6 @@ import TweetView from '../components/TweetView';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core';
 
-const styles = theme => ({
-	root: {
-		flexGrow: 1,
-	},
-	paper: {
-		padding: theme.spacing.unit * 2,
-		textAlign: 'center',
-	},
-});
 
 class BuzzWord extends Component {
 	constructor(props) {
@@ -56,7 +47,7 @@ class BuzzWord extends Component {
 		return (
 			<div style={getStyle()} id="buzz-word-unit">
 				<BuzzWordInput setProps={this.setProps} />
-				<Grid container direction='row' justify='center' alignItems='flex-start' id='grid-buzz-words' spacing={8} classes={{ root: classes.root }}>
+				<Grid container direction='row' justify='center' alignItems='flex-start' id='grid-buzz-words' spacing={8} >
 
 					<Grid item xs={12} md={6}>
 						{
@@ -78,4 +69,4 @@ class BuzzWord extends Component {
 	}
 }
 
-export default withStyles(styles)(BuzzWord);
+export default (BuzzWord);
