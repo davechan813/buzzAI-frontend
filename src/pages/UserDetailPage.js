@@ -8,6 +8,8 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  LinearProgress,
+  Button,
 } from '@material-ui/core';
 
 class UserDetailPage extends Component {
@@ -24,7 +26,9 @@ class UserDetailPage extends Component {
     return ("http://papago-dadada2.s3-us-west-1.amazonaws.com/image_uploader/" + res);
   }
 
-  componentDidMount = () => this.loadData();
+  componentDidMount() {
+    this.loadData();
+  }
 
   getListItem = (type) => {
     let res = "";
@@ -42,7 +46,7 @@ class UserDetailPage extends Component {
         this.state.loadedUser.influencer.geoLocation[2].title + ', ' + 
         this.state.loadedUser.influencer.geoLocation[0].title
       );
-      
+
     return this.state.loadedUser.influencer.geoLocation[0].title;
   }
 
@@ -52,7 +56,6 @@ class UserDetailPage extends Component {
         const requestBody = querystring.stringify({ 
           value: this.props.match.params.oid
         });
-
         axios.post('http://papago-env.yrrdssvmkj.us-west-1.elasticbeanstalk.com/oid/', requestBody)
         .then(response => {
           console.log(response);
@@ -66,9 +69,9 @@ class UserDetailPage extends Component {
   }
     
   render() {
-    console.log(this.state);
-    return (
-      <div className="userDetailPage">
+    if (!this.state.loadedUser) return <LinearProgress />
+    return (    
+      <div style={{ marginTop: 30 }}>
         <img 
           width={150} 
           height={150} 
@@ -76,7 +79,7 @@ class UserDetailPage extends Component {
           src={ this.changePictureSource(this.state.loadedUser.picture) }
           className="image"
         />
-        <Table striped bordered className="Table">
+        <Table style={{ width: '80%' }}>
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
@@ -96,13 +99,9 @@ class UserDetailPage extends Component {
               <TableCell>{ '@' + this.state.loadedUser.name }</TableCell>
               <TableCell>{ this.state.loadedUser.fullname }</TableCell>
               <TableCell>
-                <NavLink 
-                  to={ this.state.loadedUser.link } 
-                  exact 
-                  target="_blank" 
-                  rel="noopener noreferrer">
-                  <span>Link</span>
-                </NavLink>
+                <Button href={this.state.loadedUser.link} target="_blank" >
+                  Link
+                </Button>
               </TableCell>
               <TableCell>{ this.state.loadedUser.genders }</TableCell>
               <TableCell>{ this.getLocation() }</TableCell>
@@ -115,7 +114,7 @@ class UserDetailPage extends Component {
           </TableBody>
         </Table>
         
-        <Table striped bordered className="Table">
+        <Table style={{ width: '80%' }}>
           <TableHead>
             <TableRow>
               <TableCell>Audience Ages</TableCell>

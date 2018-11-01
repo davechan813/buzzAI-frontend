@@ -31,11 +31,16 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
+    width: 100,
+    height: 45,
   },
   gridList: {
     width: 2000,
     height: 450,
   },
+  circularProgress: {
+    height: 20
+  }
 });
 
 class InfluencerPage extends Component {
@@ -202,16 +207,20 @@ class InfluencerPage extends Component {
               <MenuItem value="OTHER">Other</MenuItem>
             </Select>
           </FormControl>
-          {
-            this.state.loading ? 
-            <CircularProgress style={{ height: 50 }} /> :
-            <Button
-              className={classes.button} 
+          <div style={{ display: 'inline-block' }}>
+            { this.state.loading ? 
+              <CircularProgress className={classes.circularProgress} /> :
+              <Button
               onClick={this.searchHandler}
-            >
-              Search
-            </Button>
-          }
+                variant="contained"
+                size="medium"
+                color="primary"
+                className={classes.button}
+              >
+                <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
+              </Button>
+            }
+          </div>
         </div>
         
         <div style={{ marginLeft: 50, marginRight: 50 }}>

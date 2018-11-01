@@ -9,8 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
-
 import './BuzzWordData.css';
+import { IconButton } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => (
   {
@@ -94,12 +95,18 @@ class BuzzWordData extends React.Component {
                       <TableCell component="th" scope="row">
                         {index + 1 + page * rowsPerPage}
                       </TableCell>
-                      <TableCell onClick={() => setParentState(row.buzz_word)} component="th" scope="row">
-                        {row.buzz_word}
+                      <TableCell component="th" scope="row">
+                        <span style={{ cursor: 'pointer' }} onClick={() => setParentState(row.buzz_word)} >
+                          {row.buzz_word}
+                        </span>
+                        <IconButton href={'/keyword/' + (row.buzz_word[0] === '#' ? row.buzz_word.slice(1) : row.buzz_word)} target="_blank">
+                          <SearchIcon />
+                        </IconButton>
                       </TableCell>
                       <TableCell component="th" scope="row">
                         {row.popularity_count}
                       </TableCell>
+                      
                     </TableRow>
                   );
                 })}

@@ -117,15 +117,15 @@ class BuzzWordInput extends Component {
           { this.state.loading ? 
             <CircularProgress /> :
             <Button
-            onClick={this.handleSearch}
-            variant="contained"
-            size="medium"
-            color="primary"
-            className={classes.button}
-            // id="buzz-button"
-          >
-            <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
-          </Button>
+              onClick={this.handleSearch}
+              variant="contained"
+              size="medium"
+              color="primary"
+              className={classes.button}
+              // id="buzz-button"
+            >
+              <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
+            </Button>
         }
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import User from './User';
+import UserCard from './UserCard';
 
 // Manage each user
 class UserDisplay extends Component {
@@ -7,8 +7,8 @@ class UserDisplay extends Component {
     console.log(this.props.users);
     return this.props.users.map((user, index) => {
       return (
-        <User  
-          key={user.key} // to avoid warning
+        <UserCard
+          key={index} // to avoid warning
           audienceAges={ user.audienceAges }
           audienceGenders={ user.audienceGenders }
           audienceGendersPerAge={ user.audienceGendersPerAge }
