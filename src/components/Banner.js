@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { NavLink } from 'react-router-dom';
+import './Banner.css'
+ 
+const banner = (props) => {
+  return (
+    <div id="banner">
+      <div className="inner">
+        <h2 className="CompanyName">VUSEARCH</h2>
+        <p>AI-DRIVEN MARKETING PLATFORM</p>
+        <ul className="actions">
+          <li><NavLink to="/buzz" exact className="button special">Activate</NavLink></li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-class Banner extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-
-	render() {
-		return (
-			<div>
-				<Typography variant='display2'>Building it now</Typography>
-			</div>
-		);
-	}
-}
-  
-export default Banner;
+export default banner;

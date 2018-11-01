@@ -4,6 +4,8 @@ import NavBar from '../components/NavBar';
 import KeywordTrend from './KeywordTrend';
 import BuzzWord from './BuzzWord';
 import Banner from '../components/Banner';
+import userDetailPage from './UserDetailPage';
+import InfluencerPage from './InfluencerPage';
 
 class BuzzAI extends Component {
 	constructor(props) {
@@ -13,7 +15,6 @@ class BuzzAI extends Component {
 
 	setData = (data) => this.setState({data: data});
 
-  // container page
 	render() {
 		return (
 			<div>
@@ -21,6 +22,8 @@ class BuzzAI extends Component {
         <Route path="/" exact component={Banner} />
         <Route path="/buzz" exact component={BuzzWord} />
         <Route path="/keyword" exact component={KeywordTrend} />
+        <Route path="/influencer" exact component={InfluencerPage} />
+		    <Route path="/users/:oid" exact component={userDetailPage} />
 			</div>
 		);
 	}

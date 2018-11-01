@@ -16,10 +16,8 @@ class BuzzWord extends Component {
 	// function to get data from its child and set to its own state
 	setProps = (name, val) => this.setState({ [name]: val });
 
-
   // TODO: Add a progress bar when data is loading
 	render() {
-
 		const styleNotLoaded = {
       marginTop: 50,
       padding: '10%'
