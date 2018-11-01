@@ -99,7 +99,10 @@ class BuzzWordData extends React.Component {
                         <span style={{ cursor: 'pointer' }} onClick={() => setParentState(row.buzz_word)} >
                           {row.buzz_word}
                         </span>
-                        <IconButton href={'/keyword/' + (row.buzz_word[0] === '#' ? row.buzz_word.slice(1) : row.buzz_word)} target="_blank">
+                        <IconButton
+                          href={'/keyword/' + (row.buzz_word[0] === '#' ? row.buzz_word.slice(1) : row.buzz_word)} // if the word starts with a #, get rid of it
+                          target="_blank"
+                        >
                           <SearchIcon />
                         </IconButton>
                       </TableCell>
