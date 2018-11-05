@@ -14,6 +14,7 @@ import './assets-landing/fonts/glyphicons-halflings-regular.ttf';
 import './assets-landing/fonts/glyphicons-halflings-regular.woff';
 import './assets-landing/fonts/Pe-icon-7-stroke.eot';
 
+
 class Banner extends Component {
 	constructor(props) {
 		super(props);
