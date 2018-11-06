@@ -21,25 +21,29 @@ class KeywordTrend extends Component {
 			padding: '10%'
 		};
 		const getStyle = () => {
-			if(this.state.data.length > 0){
+			if(this.state.data && this.state.data.length > 0){
 				return null;
 			} else {
 				return styleNotLoaded;
 			}
 		}
 
-    console.log(this.state);
+    console.log(this.props.match);
 
 		return (
 			<div style={getStyle()}>
-				<TrendInputGroup setParentState={this.setParentState} />
-        {this.state.function === 'region' &&
-         this.state.data.length > 0 && 
-         <TrendRegionDataDisplay data={this.state.data} />
+				<TrendInputGroup setParentState={this.setParentState} predefine={this.props.match.params.word} />
+        {
+          this.state.function === 'region' &&
+          this.state.data && 
+          this.state.data.length > 0 && 
+          <TrendRegionDataDisplay data={this.state.data} />
         }
-        {this.state.function === 'time' &&
-         this.state.data.length > 0 && 
-         <TrendTimeDataDisplay data={this.state.data} />
+        {
+          this.state.function === 'time' &&
+          this.state.data && 
+          this.state.data.length > 0 && 
+          <TrendTimeDataDisplay data={this.state.data} />
         }
 			</div>
 		);

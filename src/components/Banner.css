@@ -1,0 +1,133 @@
+/* Banner */
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+    height: 100vh;
+    min-height: 35em;
+    text-align: center;
+    background: url("../static/background.jpg") no-repeat 50% 50%;
+    background-size: cover;
+}
+
+#banner h2 {
+    display: inline-block;
+    font-size: 3em;
+    font-weight: bold;
+    opacity: 1;
+    padding: 0.5em 1em;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+#banner h2:before, #banner h2:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+}
+
+#banner h2:before {
+    top: 0;
+    left: 0;
+}
+
+#banner h2:after {
+    bottom: 0;
+    right: 0;
+}
+
+#banner p {
+    letter-spacing: 0.225em;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+#banner p {
+    letter-spacing: 0.225em;
+    text-transform: uppercase;
+    color: white;
+}
+
+#banner p a {
+    color: inherit;
+}
+
+/* ul */
+ul.actions li {
+    display: inline-block;
+    padding: 10px 0 0 0;
+    vertical-align: middle;
+}
+
+ul.actions {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+    height: 30px;
+}
+
+
+/* Button */
+.button {
+    background-color: transparent;
+    border-radius: 3px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: 600;
+    height: 4em;
+    line-height: 4em;
+    letter-spacing: 0.225em;
+    padding: 0 2.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button.special {
+    background-color: #ed4933;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
+.button.special:hover {
+    background-color: #ef5e4a !important;
+}
+
+.button.special:active {
+    background-color: #eb341c !important;
+}
+
+/* h2 */
+h2 {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.225em;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 50px;
+    color: white;
+    line-height: 1.75em;
+}
+
+@media screen and (max-width: 736px) {
+    h2 {
+        font-size: 1.1em;
+        line-height: 1.65em;
+    }
+}
+

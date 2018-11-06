@@ -1,10 +1,25 @@
-import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { NavLink } from 'react-router-dom';
+//import './Banner.css'
+
+// const banner = (props) => {
+//   return (
+//     <div id="banner">
+//       <div className="inner">
+//         <h2 className="CompanyName">VUSEARCH</h2>
+//         <p>AI-DRIVEN MARKETING PLATFORM</p>
+//         <ul className="actions">
+//           <li><NavLink to="/buzz" exact className="button special">START</NavLink></li>
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// };
 
 import './dist/css/style.css';
 
 
-class Banner extends Component {
+class Banner extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};

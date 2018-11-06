@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,8 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@material-ui/core/Typography';
-
 import './BuzzWordData.css';
+import { IconButton } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => (
   {
@@ -61,75 +61,82 @@ class BuzzWordData extends React.Component {
   }
 
   render() {
-    const { classes, data, address } = this.props;
+    const { classes, data, address, setParentState } = this.props;
     const { page, rowsPerPage } = this.state;
     let rows = data.slice(); // immutability ftw
     rows.sort(popularityCompare);
     return (
 
-      <Grid container direction='column' justify='center' alignItems='center' id='grid-buzz-words'>
 
-        <Paper
-          className={classes.paper}>
-          <div className={classes.title}>
-            <Typography variant="title" id="tableTitle" >
-              Buzzwords in {address}
-            </Typography>
-          </div>
 
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>Rank</TableCell>
-                <TableCell>Buzzword</TableCell>
-                <TableCell>Hit Count</TableCell>
-              </TableRow>
-            </TableHead>
+      <Paper classes={classes.root}>
+        <div>
+          <Typography variant="title" id="tableTitle" classes={{ title: classes.title }}>
+            Buzzwords in {address}
+          </Typography>
+        </div>
 
-            <TableBody>
-              {
-                rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    return (
-                      <TableRow key={row.id}>
-                        <TableCell component="th" scope="row">
-                          {index + 1 + page * rowsPerPage}
-                        </TableCell>
-                        <TableCell component="th" scope="row">
-                          <a href={row.source_url} target="_blank">{row.buzz_word}</a>
-                        </TableCell>
-                        <TableCell component="th" scope="row">
-                          {row.popularity_count}
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-            </TableBody>
-          </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Rank</TableCell>
+              <TableCell>Buzzword</TableCell>
+              <TableCell>Hit Count</TableCell>
+            </TableRow>
+          </TableHead>
 
-          <TablePagination
-            component="div"
-            page={page}
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            rowsPerPageOptions={[10]}
-            backIconButtonProps={{
-              'aria-label': 'Previous Page',
-            }}
-            nextIconButtonProps={{
-              'aria-label': 'Next Page',
-            }}
-            onChangePage={this.handleChangePage}
-          />
+          <TableBody>
+            {
+              rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
+                  return (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {index + 1 + page * rowsPerPage}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        <span style={{ cursor: 'pointer' }} onClick={() => setParentState(row.buzz_word)} >
+                          {row.buzz_word}
+                        </span>
+                        <IconButton
+                          href={'/keyword/' + (row.buzz_word[0] === '#' ? row.buzz_word.slice(1) : row.buzz_word)} // if the word starts with a #, get rid of it
+                          target="_blank"
+                        >
+                          <SearchIcon />
+                        </IconButton>
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.popularity_count}
+                      </TableCell>
+                      
+                    </TableRow>
+                  );
+                })}
+          </TableBody>
+        </Table>
 
-        </Paper>
-      </Grid>
+        <TablePagination
+          component="div"
+          page={page}
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[10]}
+          backIconButtonProps={{
+            'aria-label': 'Previous Page',
+          }}
+          nextIconButtonProps={{
+            'aria-label': 'Next Page',
+          }}
+          onChangePage={this.handleChangePage}
+        />
+
+      </Paper>
+
 
     );
   }
 }
-
 BuzzWordData.propTypes = {
   classes: PropTypes.object.isRequired,
 };

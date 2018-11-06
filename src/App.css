@@ -23,7 +23,7 @@
   to { transform: rotate(360deg); }
 }
 
-body {
+/* body {
   backface-visibility: visible;
   object-fit: cover;
 
@@ -49,4 +49,4 @@ body {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
-}
+} */

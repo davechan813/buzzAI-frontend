@@ -11,8 +11,9 @@ import {
 import HomeIcon from '@material-ui/icons/Home';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
-import EmailIcon from '@material-ui/icons/Email'
-import PeopleIcon from '@material-ui/icons/People'
+import EmailIcon from '@material-ui/icons/Email';
+import PeopleIcon from '@material-ui/icons/People';
+import FaceIcon from '@material-ui/icons/Face';
 
 const styles = {
   list: {
@@ -44,6 +45,12 @@ class LocalMenu extends React.Component {
               <LocationSearchingIcon />
             </ListItemIcon>
             <ListItemText primary="Latest Trends" />
+          </ListItem>
+          <ListItem component="a" href="/influencer" button>
+            <ListItemIcon>
+              <FaceIcon />
+            </ListItemIcon>
+            <ListItemText primary="Influencers" />
           </ListItem>
           <Divider />
           <ListItem component="a" href="/team" button>

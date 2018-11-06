@@ -64,8 +64,9 @@ class InputGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: '',
-      function: 'region',
+      // keyword: !!this.props.predefine ? this.props.predefine : "",
+      keyword: "",
+      function: 'time',
       address: '',
       resolution: 'COUNTRY',
       startTime: moment(new Date(new Date().setFullYear(new Date().getFullYear() - 1))).format('YYYY-MM-DD'),
@@ -73,16 +74,27 @@ class InputGroup extends React.Component {
       geo: '',
       loading: false
     };
+    // if (this.state.keyword) this.handleSearch();
+  }
+
+  componentDidMount() { // parse the url parameter
+    if (!!this.props.predefine) {
+      this.setState({
+        keyword: this.props.predefine
+      }, () => this.handleSearch());
+    }
   }
 
   handleChange = name => event => {
-    if (name === 'function') {
-      this.props.setParentState('function', event.target.value);
-      this.props.setParentState('data', []);
+    if (name !== 'keyword') {
+      this.setState({
+        [name]: event.target.value
+      }, () => this.handleSearch());  
+    } else {
+      this.setState({
+        [name]: event.target.value,
+      });
     }
-    this.setState({
-      [name]: event.target.value,
-    });
   };
 
   handleChecked = name => event => {
@@ -110,8 +122,10 @@ class InputGroup extends React.Component {
       // console.log("the response is:", response.data.default.geoMapData.slice(0, 50));
       if (self.state.function === 'region') {
         self.props.setParentState('data', response.data.default.geoMapData.slice(0, 50));
+        self.props.setParentState('function', 'region');
       } else {
         self.props.setParentState('data', response.data.default.timelineData);
+        self.props.setParentState('function', 'time');
       }
     })
     .catch(function (error) {
@@ -123,7 +137,7 @@ class InputGroup extends React.Component {
     if (moment.hasOwnProperty('_isAMomentObject')) {
       this.setState({
         [name]: moment.format('YYYY-MM-DD'),
-      });
+      }, () => this.handleSearch());
     }
   }
 
@@ -137,7 +151,6 @@ class InputGroup extends React.Component {
 
   render() {
     const { classes } = this.props;
-    // console.log(this.state);
     return (
       <div id="input-group">
       <form className={classes.root} noValidate autoComplete="off">
@@ -181,14 +194,14 @@ class InputGroup extends React.Component {
               onChange={this.handleChange('function')}
             >
               <FormControlLabel
-                value="region"
-                control={<Radio color="primary" />}
-                label="Interest By Region"
-              />
-              <FormControlLabel
                 value='time'
                 control={<Radio color="primary" />}
                 label="Interest By Time"
+              />
+              <FormControlLabel
+                value="region"
+                control={<Radio color="primary" />}
+                label="Interest By Region"
               />
             </RadioGroup>
           </FormControl>

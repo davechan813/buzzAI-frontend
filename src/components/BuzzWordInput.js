@@ -68,9 +68,9 @@ class BuzzWordInput extends Component {
     self.setState({ loading: true });
 
     axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
-      placeName: self.state.country !== '' && self.state.city !== '' ? 
-                 self.state.city + ', ' + self.state.country :
-                 self.state.country,
+      placeName: self.state.country !== '' && self.state.city !== '' ?
+        self.state.city + ', ' + self.state.country :
+        self.state.country,
     })
       .then(function (response) {
         let trendsArray = response.data[0].trends;
@@ -97,7 +97,7 @@ class BuzzWordInput extends Component {
   }
 
   render() {
-    console.log('this.state:', this.state);
+    // console.log('this.state:', this.state);
     const { classes } = this.props;
     return (
       <div>
@@ -117,15 +117,15 @@ class BuzzWordInput extends Component {
           { this.state.loading ? 
             <CircularProgress /> :
             <Button
-            onClick={this.handleSearch}
-            variant="contained"
-            size="medium"
-            color="primary"
-            className={classes.button}
-            // id="buzz-button"
-          >
-            <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
-          </Button>
+              onClick={this.handleSearch}
+              variant="contained"
+              size="medium"
+              color="primary"
+              className={classes.button}
+              // id="buzz-button"
+            >
+              <span className={classes.buttonText} id="buzz-button-text">Buzz!</span>
+            </Button>
         }
         </div>
       </div>
