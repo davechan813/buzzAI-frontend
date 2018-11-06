@@ -25,17 +25,17 @@ class Banner extends Component {
 		return (
 			<div>
         <meta charSet="utf-8" />
-        <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
+        <link rel="icon" type="image/png" href="./assets-landing/img/favicon.ico" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Awesome Landing Page by Creative Tim</title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
         <meta name="viewport" content="width=device-width" />
-        <link href="assets-landing/css/bootstrap.css" rel="stylesheet" />
-        <link href="assets-landing/css/landing-page.css" rel="stylesheet" />
+        <link href="./assets-landing-landing/css/bootstrap.css" rel="stylesheet" />
+        <link href="./assets-landing-landing/css/landing-page.css" rel="stylesheet" />
         {/*     Fonts and icons     */}
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300" rel="stylesheet" type="text/css" />
-        <link href="assets-landing/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        <link href="./assets-landing-landing/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <nav className="navbar navbar-transparent navbar-top" role="navigation">
           <div className="container">
             {/* Brand and toggle get grouped for better mobile display */}
@@ -49,7 +49,7 @@ class Banner extends Component {
               <a href="http://www.creative-tim.com">
                 <div className="logo-container">
                   <div className="logo">
-                    <img src="assets/img/new_logo.png" alt="Creative Tim Logo" />
+                    <img src="./assets-landing/img/new_logo.png" alt="Creative Tim Logo" />
                   </div>
                   <div className="brand">
                     Creative Tim
@@ -89,7 +89,7 @@ class Banner extends Component {
               <div className="row">
                 <div className="col-md-7  hidden-xs">
                   <div className="parallax-image">
-                    <img src="assets/img/showcases/showcase-2/mac1.png" />
+                    <img src="./assets-landing/img/showcases/showcase-2/mac1.png" />
                   </div>
                 </div>
                 <div className="col-md-5">
@@ -115,12 +115,12 @@ class Banner extends Component {
               </p>
               <div className="logos">
                 <ul className="list-unstyled">
-                  <li><img src="assets/img/logos/adobe.png" /></li>
-                  <li><img src="assets/img/logos/zendesk.png" /></li>
-                  <li><img src="assets/img/logos/ebay.png" />
-                  </li><li><img src="assets/img/logos/evernote.png" /></li>
-                  <li><img src="assets/img/logos/airbnb.png" /></li>
-                  <li><img src="assets/img/logos/zappos.png" /></li>
+                  <li><img src="./assets-landing/img/logos/adobe.png" /></li>
+                  <li><img src="./assets-landing/img/logos/zendesk.png" /></li>
+                  <li><img src="./assets-landing/img/logos/ebay.png" />
+                  </li><li><img src="./assets-landing/img/logos/evernote.png" /></li>
+                  <li><img src="./assets-landing/img/logos/airbnb.png" /></li>
+                  <li><img src="./assets-landing/img/logos/zappos.png" /></li>
                 </ul>
               </div>
             </div>
@@ -142,7 +142,7 @@ class Banner extends Component {
                   </div>
                 </div>
                 <div className="col-md-6 ">
-                  <img src="assets/img/showcases/showcase-2/mac2.png" style={{marginTop: '-50px'}} />
+                  <img src="./assets-landing/img/showcases/showcase-2/mac2.png" style={{marginTop: '-50px'}} />
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@ class Banner extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <div className="demo-image">
-                    <img src="assets/img/showcases/showcase-2/examples/home_4.jpg" alt />
+                    <img src="./assets-landing/img/showcases/showcase-2/examples/home_4.jpg" alt />
                   </div>
                 </div>
                 <div className="col-md-5 col-md-offset-1">
@@ -178,7 +178,7 @@ class Banner extends Component {
                 </div>
                 <div className="col-md-6 col-md-offset-1">
                   <div className="demo-image">
-                    <img src="assets/img/showcases/showcase-2/examples/home_6.jpg" alt />
+                    <img src="./assets-landing/img/showcases/showcase-2/examples/home_6.jpg" alt />
                   </div>
                 </div>
               </div>
@@ -237,7 +237,7 @@ class Banner extends Component {
                 <div className="carousel-inner" role="listbox">
                   <div className="item">
                     <div className="mask">§
-                      <img src="assets/img/faces/face-4.jpg" />
+                      <img src="./assets-landing/img/faces/face-4.jpg" />
                     </div>
                     <div className="carousel-testimonial-caption">
                       <p>Jay Z, Producer</p>
@@ -246,7 +246,7 @@ class Banner extends Component {
                   </div>
                   <div className="item active">
                     <div className="mask">
-                      <img src="assets/img/faces/face-3.jpg" />
+                      <img src="./assets-landing/img/faces/face-3.jpg" />
                     </div>
                     <div className="carousel-testimonial-caption">
                       <p>Drake, Artist</p>
@@ -255,7 +255,7 @@ class Banner extends Component {
                   </div>
                   <div className="item">
                     <div className="mask">
-                      <img src="assets/img/faces/face-2.jpg" />
+                      <img src="./assets-landing/img/faces/face-2.jpg" />
                     </div>
                     <div className="carousel-testimonial-caption">
                       <p>Rick Ross, Musician</p>
@@ -274,7 +274,7 @@ class Banner extends Component {
           <div className="section section-no-padding">
             <div className="parallax filter-gradient blue" data-color="blue">
               <div className="parallax-background">
-                <img className="parallax-background-image" src="assets/img/showcases/showcase-2/bg2.jpg" />
+                <img className="parallax-background-image" src="./assets-landing/img/showcases/showcase-2/bg2.jpg" />
               </div>
               <div className="info">
                 <h1>Download this landing page for free!</h1>
@@ -349,20 +349,20 @@ class Banner extends Component {
               <li className="header-title">Template</li>
               <li className>
                 <a href="index.html" className="switch">
-                  <img alt="..." src="assets/img/blue.jpg" />
+                  <img alt="..." src="./assets-landing/img/blue.jpg" />
                   <p className="pull-left">Awesome Landing Page</p>
                 </a>
               </li>
               <li className="header-title">Showcases</li>
               <li className>
                 <a href="phone_app.html" className="switch">
-                  <img alt="..." src="assets/img/phone_app.jpg" />
+                  <img alt="..." src="./assets-landing/img/phone_app.jpg" />
                   <p className="pull-left">Showcase 1</p>
                 </a>
               </li>
               <li className="active">
                 <a href="web_app.html" className="switch">
-                  <img alt="..." src="assets/img/web_app.jpg" />
+                  <img alt="..." src="./assets-landing/img/web_app.jpg" />
                   <p className="pull-left">Showcase 2</p>
                 </a>
               </li>
