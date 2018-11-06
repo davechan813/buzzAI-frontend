@@ -27,7 +27,7 @@ body {
   backface-visibility: visible;
   object-fit: cover;
 
-  background: linear-gradient(270deg, #ffffff, #ffeaea);
+  
   background-size: 400% 400%;
 
   -webkit-animation: AnimationName 50s ease infinite;
