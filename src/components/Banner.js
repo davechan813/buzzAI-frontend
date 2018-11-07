@@ -17,6 +17,7 @@ import { NavLink } from 'react-router-dom';
 // };
 
 import './dist/css/style.css';
+//import './dist/js/main.min.js';
 
 
 class Banner extends React.Component {

@@ -21,6 +21,10 @@ class BuzzAI extends Component {
         <NavBar />
         <Route path="/" exact component={Banner} />
         <Route path="/buzz" exact component={BuzzWord} />
+        <Route path="/keyword/" exact component={KeywordTrend} />
+		<Route path="/keyword/:word" exact component={KeywordTrend} />
+      
+
         <Route path="/keyword" exact component={KeywordTrend} />
 				<Route path="/contact" exact component={Contacts} />
 				<Route path="/team" exact component={MeetTheTeam} />
