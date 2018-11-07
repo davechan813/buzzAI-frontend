@@ -311,6 +311,7 @@ class Banner extends React.Component {
                 </g>
               </svg>
             </div>
+
           </div>
         </div>
       </section>
