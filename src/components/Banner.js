@@ -120,7 +120,7 @@ class Banner extends React.Component {
               <p className="hero-cta is-revealing">
                 <a
                   className="button button-primary button-shadow"
-                  href="#"
+                  href="/buzz"
                 >
                   Get Started
                 </a>

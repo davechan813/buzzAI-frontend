@@ -31,11 +31,11 @@ class MeetTheTeam extends Component {
       <div style={styleContacts}>
         <h1>Meet the Team</h1>
         <ul style={titleList}>
-          <li>#1</li>
-          <li>#2</li>
-          <li>#3</li>
-          <li>#4</li>
-          <li>#5</li>
+          <li>Masaki Nakada </li>
+          <li>Zhibang Chen</li>
+          <li>Jiayu Guo</li>
+          <li>Haejin Jo</li>
+          <li>Evan Yang</li>
         </ul>
       </div>
 		);
