@@ -20,7 +20,7 @@ import './InputGroup.css';
 const styles = theme => ({
   root: {
     // display: 'flex',
-    margin: theme.spacing.unit * 3,
+    // margin: theme.spacing.unit * 3,
     flexWrap: 'wrap',
     // textAlign: 'center',
     // alignContent: 'center'
