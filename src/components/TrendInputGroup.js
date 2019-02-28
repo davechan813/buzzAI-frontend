@@ -153,7 +153,7 @@ class InputGroup extends React.Component {
     const { classes } = this.props;
     return (
       <div id="input-group">
-      <form className={classes.root} noValidate autoComplete="off">
+        <form className={classes.root} noValidate autoComplete="off">
         <div id="top-level-input-group">
           <TextField
             style={{ minWidth: 500 }}
@@ -260,11 +260,9 @@ class InputGroup extends React.Component {
               }
             </div>
           }
-          
-
         </div>
 
-      </form>
+        </form>
       </div>
     );
   }

@@ -99,6 +99,9 @@ module.exports = {
     ],
   },
   module: {
+    // loaders: [
+    //   { test: /\.html$/, loader: 'html' }
+    // ], // !! added by Dave, unknown yet
     strictExportPresence: true,
     rules: [
       // TODO: Disable require.ensure as it's not a standard language feature.
@@ -130,6 +133,15 @@ module.exports = {
           // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
+          {
+            test: /\.(html)$/,
+            use: {
+              loader: 'html-loader',
+              options: {
+                attrs: [':data-src']
+              }
+            }
+          }, // !! unknown, added by Dave
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
