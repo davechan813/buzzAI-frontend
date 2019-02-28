@@ -7,6 +7,7 @@ import Banner from '../components/Banner';
 import Contacts from './Contacts';
 import MeetTheTeam from './MeetTheTeam';
 import InfluencerPage from './InfluencerPage';
+import UserDetailPage from './UserDetailPage';
 
 class BuzzAI extends Component {
 	constructor(props) {
@@ -25,11 +26,10 @@ class BuzzAI extends Component {
 				<Route path="/buzz" exact component={BuzzWord} />
 				<Route path="/keyword/" exact component={KeywordTrend} />
 				<Route path="/keyword/:word" exact component={KeywordTrend} />
-        		<Route path="/keyword" exact component={KeywordTrend} />
 				<Route path="/contact" exact component={Contacts} />
 				<Route path="/team" exact component={MeetTheTeam} />
 				<Route path='/influencer' exact component={InfluencerPage} />
-				<Route path="/users/:oid" exact component={userDetailPage} />
+				<Route path="/users/:oid" exact component={UserDetailPage} />
 			</div>
 		);
 	}

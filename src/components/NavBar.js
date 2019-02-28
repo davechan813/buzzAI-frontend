@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import LocalMenu from './LocalMenu';
 import { Button } from '@material-ui/core';
+import { inherits } from 'util';
 
 const styles = {
   menuButton: {
@@ -46,7 +47,15 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit">
-              BuzzAI
+              <a 
+                href='/' 
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'inherit'
+                }}
+              >
+                BuzzAI
+              </a>
             </Typography>
             <Button
               color="inherit"
