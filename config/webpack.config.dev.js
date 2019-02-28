@@ -141,7 +141,7 @@ module.exports = {
                 attrs: [':data-src']
               }
             }
-          }, // !! unknown, added by Dave
+          }, // Added by Dave
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
