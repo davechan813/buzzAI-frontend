@@ -62,6 +62,12 @@ class BuzzWordInput extends Component {
   handleSearch = () => {
     let self = this;
 
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+
     // console.log('self.state.country:', self.state.country);
     // console.log('self.state.city:', self.state.city);
 
@@ -72,7 +78,7 @@ class BuzzWordInput extends Component {
       placeName: self.state.country !== '' && self.state.city !== '' ?
         self.state.city + ', ' + self.state.country :
         self.state.country,
-    })
+    }, config)
       .then(function (response) {
         let trendsArray = response.data[0].trends;
 
@@ -86,7 +92,7 @@ class BuzzWordInput extends Component {
         }
         self.props.setProps('data', data_to_set); // set data to its parent's state so data can be passed to BuzzWordData
         // was response.data[0].locations[0].name
-        self.props.setProps('address', 'This city'); // set data to its parent's state so data can be passed to BuzzWordData
+        self.props.setProps('address', 'this city'); // set data to its parent's state so data can be passed to BuzzWordData
         self.setState({ loading: false });
       })
       .catch(function (error) {
