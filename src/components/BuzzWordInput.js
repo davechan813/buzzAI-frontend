@@ -67,7 +67,8 @@ class BuzzWordInput extends Component {
 
     self.setState({ loading: true });
 
-    axios.post('http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10', {
+    // changed to buzz-jb.us-east-2.elasticbeanstalk.com/buzz10 was http://buzzai-env-2.us-east-2.elasticbeanstalk.com/buzz10
+    axios.post('https://cors-anywhere.herokuapp.com/http://buzz-jb.us-east-2.elasticbeanstalk.com/buzz10', {
       placeName: self.state.country !== '' && self.state.city !== '' ?
         self.state.city + ', ' + self.state.country :
         self.state.country,
@@ -84,7 +85,8 @@ class BuzzWordInput extends Component {
           }
         }
         self.props.setProps('data', data_to_set); // set data to its parent's state so data can be passed to BuzzWordData
-        self.props.setProps('address', response.data[0].locations[0].name); // set data to its parent's state so data can be passed to BuzzWordData
+        // was response.data[0].locations[0].name
+        self.props.setProps('address', 'This city'); // set data to its parent's state so data can be passed to BuzzWordData
         self.setState({ loading: false });
       })
       .catch(function (error) {

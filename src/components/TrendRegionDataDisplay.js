@@ -5,7 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import DataTable from './DataTable';
-import BarChart from './BarChart';
+// import BarChart from './BarChart';
 
 const styles = theme => ({
   root: {
@@ -36,7 +36,7 @@ class TrendRegionDataDisplay extends React.Component {
     const { classes, data } = this.props;
     return (
       <div className={classes.root}>
-        <BarChart data={data} />
+        {/* <BarChart data={data} /> */}
       </div>
     );
   }
