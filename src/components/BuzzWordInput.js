@@ -24,9 +24,12 @@ let isArrayEqual = (x, y) => {
 }
 
 let popularityCompare = (x, y) => {
-  let keyA = x.popularity_count,
-    keyB = y.popularity_count;
 
+  // let keyA = (x.popularity_count == "N/A" ? 0 : x.popularity_count),
+  //   keyB = (y.popularity_count == "N/A" ? 0 : y.popularity_count);
+  let keyA = x.tweet_volume;
+  let keyB = y.tweet_volume;
+  
   return keyB - keyA;
 }
 
@@ -45,7 +48,7 @@ class BuzzWordInput extends Component {
   getValidData = (arrayData) => {
     let word = arrayData.name;
     let url = arrayData.url;
-    let count = arrayData.tweet_volume;
+    let count = (arrayData.tweet_volume == 0 ? "N/A" : arrayData.tweet_volume);
 
     let obj = {
       id: row_id, //defined above class header (see above)
